@@ -8,3 +8,14 @@
 .links {
     font-family: 'Montserrat', serif;
 }
+
+.links li a {
+    border-left: 1px solid black;
+    padding: 15px;
+}
+
+.links li a:hover {
+    border-left: 1px solid black;
+    padding: 15px;
+    background-color: white;
+}
