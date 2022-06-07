@@ -1,10 +1,10 @@
 import Link from "next/link"
 import styles from "../../styles/NavBar.module.css"
-import useWindowSize from "../hooks/useWindowSize"
+import { useWindowWidth } from "../hooks/useWindowSize"
 
 export default function NavBar() {
 
-    const size = useWindowSize()
+    const width = useWindowWidth()
 
     return(
         <>
@@ -16,7 +16,7 @@ export default function NavBar() {
                             <span className={`self-center text-xl font-semibold whitespace-nowrap dark:text-black`}>Alexandria</span>
                         </a>
                     </Link>
-                    {size.width>=770?
+                    {width>=770?
                     <div className={`block w-auto`}>
                         <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
                             <li>
