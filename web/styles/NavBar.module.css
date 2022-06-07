@@ -15,8 +15,6 @@
 }
 
 .links li a:hover {
-    border-left: 1px solid black;
-    padding: 15px;
     background-color: white;
 }
 
@@ -26,13 +24,6 @@
 	height: 50px;
 	cursor: pointer;
     border-left: 1px solid black;
-}
-
-.menuicon.active:hover span:first-of-type,
-.menuicon.active:hover span:last-of-type,
-.menuicon:hover.menuicon__cheeckbox:checked + div span:first-of-type,
-.menuicon:hover.menuicon__cheeckbox:checked + div span:last-of-type {
-    width: 22px;
 }
 
 .menuicon.active span:first-of-type, .menuicon__cheeckbox:checked + div span:first-of-type {

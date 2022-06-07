@@ -3,7 +3,7 @@ import styles from "../../styles/NavBar.module.css"
 import { useWindowWidth } from "../hooks/useWindowSize"
 import { useEffect, useState } from "react"
 
-export default function NavBar() {
+export default function NavBar({elements}) {
 
     const width = useWindowWidth()
 
@@ -24,27 +24,27 @@ export default function NavBar() {
                         <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
                             <li>
                                 <Link href={"/"}>
-                                    <a className={`flex text-black hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Home</a>
+                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Home</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/"}>
-                                    <a className={`flex text-black hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Shop</a>
+                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Shop</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/"}>
-                                    <a className={`flex text-black hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Blog</a>
+                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Blog</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/"}>
-                                    <a className={`flex text-black hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>About us</a>
+                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>About us</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/"}>
-                                    <a className={`flex text-black hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Contact</a>
+                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Contact</a>
                                 </Link>
                             </li>
                         </ul>
