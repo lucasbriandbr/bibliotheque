@@ -22,31 +22,13 @@ export default function NavBar({elements}) {
                     {width>=770?
                     <div className={`block w-auto`}>
                         <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
-                            <li>
-                                <Link href={"/"}>
-                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Home</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={"/"}>
-                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Shop</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={"/"}>
-                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Blog</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={"/"}>
-                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>About us</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href={"/"}>
-                                    <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>Contact</a>
-                                </Link>
-                            </li>
+                            {elements.map((element) => {return(
+                                <li>
+                                    <Link href={element.link}>
+                                        <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>{element.title}</a>
+                                    </Link>
+                                </li>
+                            )})}
                         </ul>
                     </div>
                     :

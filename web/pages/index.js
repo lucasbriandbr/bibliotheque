@@ -12,7 +12,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar/>
+      <NavBar elements={[
+        {title:"Home", link:"/"},
+        {title:"Shop", link:"/"},
+        {title:"Blog", link:"/"},
+        {title:"About us", link:"/"},
+        {title:"Contact", link:"/"}
+      ]}/>
+
     </div>
   )
 }
