@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
+//  Import des objets
+
 import NavBar from './components/nav'
+
+//  Import des constantes
+
+import NavLinks from "./constantes/NavLinks"
 
 export default function Home() {
   return (
@@ -12,13 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar elements={[
-        {title:"Home", link:"/"},
-        {title:"Shop", link:"/"},
-        {title:"Blog", link:"/"},
-        {title:"About us", link:"/"},
-        {title:"Contact", link:"/"}
-      ]}/>
+      <NavBar elements={NavLinks()}/>
 
     </div>
   )

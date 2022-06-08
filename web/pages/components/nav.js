@@ -5,45 +5,59 @@ import { useEffect, useState } from "react"
 
 export default function NavBar({elements}) {
 
-    const width = useWindowWidth()
+    let width = useWindowWidth()
 
     const [menuOpen, setMenuOpen] = useState(false)
 
+    useEffect(() => {
+        if (width>=770){
+            setMenuOpen(false)
+        }
+    },[width]);
+
     return(
         <>
-            <nav className={`bg-white dark:bg-[#faebd7] border-b-[1px] border-black`}>
-                <div className={`flex flex-wrap justify-between items-center mx-auto`}>
-                    <Link href={"/"}>
-                        <a className={`flex ml-6 items-center ${styles.title}`}>
-                            {/* <img src="/docs/images/logo.svg" className={`mr-3 h-6 sm:h-9`} alt="Flowbite Logo" /> */}
-                            <span className={`self-center text-xl font-semibold whitespace-nowrap dark:text-black`}>Alexandria</span>
-                        </a>
-                    </Link>
-                    {width>=770?
-                    <div className={`block w-auto`}>
-                        <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
-                            {elements.map((element) => {return(
-                                <li>
-                                    <Link href={element.link}>
-                                        <a className={`flex text-black transition-colors duration-200 ease-in-out hover:bg-gray-50 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 dark:text-black md:dark:hover:text-gray-800 dark:hover:text-gray-800 md:dark:hover:bg-transparent`}>{element.title}</a>
-                                    </Link>
-                                </li>
-                            )})}
-                        </ul>
-                    </div>
-                    :
-                    // <button type="button" className={`inline-flex items-center p-[15px] border-l-[1px] border-black ml-3 text-sm text-black hover:bg-white focus:outline-none dark:text-black`} aria-controls="mobile-menu" aria-expanded="false" onClick={() => setMenuOpen(!menuOpen)}>
-                    //     <svg className={`${menuOpen?"hidden":""} w-6 h-6`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg>
-                    //     <svg className={`${!menuOpen?"hidden":""} w-6 h-6`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path></svg>
-                    // </button>
-                    <div className={`${styles.menuicon}`} onClick={() => setMenuOpen(!menuOpen)}>
-                        <input className={`${styles.menuicon__cheeckbox}`} type="checkbox" />
-                        <div>
-                            <span></span>
-                            <span></span>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"}`}>
+                <div className={`z-10 relative bg-[#faebd7] border-b-[1px] border-black`}>
+                    <div className={`flex flex-wrap justify-between items-center mx-auto`}>
+                        <Link href={"/"}>
+                            <a className={`flex ml-6 items-center ${styles.title}`}>
+                                <span className={`self-center text-xl font-semibold whitespace-nowrap`}>Alexandria</span>
+                            </a>
+                        </Link>
+                        {width>=770?
+                        <div className={`block w-auto`}>
+                            <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
+                                {elements.map((element) => {return(
+                                    <li key={element.title}>
+                                        <Link href={element.link}>
+                                            <a className={`flex text-black uppercase transition-colors duration-200 ease-in-out hover:bg-white text-xs`}>{element.title}</a>
+                                        </Link>
+                                    </li>
+                                )})}
+                            </ul>
                         </div>
+                        :
+                        <div className={`${styles.menuicon}`} onClick={() => setMenuOpen(!menuOpen)}>
+                            <input className={`${styles.menuicon__cheeckbox}`} type="checkbox"/>
+                            <div>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        }
                     </div>
-                    }
+                </div>
+                <div className={`z-0 relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"-translate-y-full"}`}>
+                    <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium`}>
+                        {elements.map((element) => {return(
+                            <li key={element.title}>
+                                <Link href={element.link}>
+                                    <a className={`flex text-black uppercase p-[15px] border-b-[1px] border-black text-xs`}>{element.title}</a>
+                                </Link>
+                            </li>
+                        )})}
+                    </ul>
                 </div>
             </nav>
         </>
