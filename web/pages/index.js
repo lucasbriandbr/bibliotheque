@@ -25,9 +25,11 @@ export default function Home() {
 
       <div className={`min-h-screen`}>
 
-        <p></p>
-
       </div>
+
+      <p>8=D Madame ?</p>
+
+      <p>8==========D Madame !</p>
 
       <Footer elements={FootLinks()}/>
 
