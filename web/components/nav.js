@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styles from "../../styles/NavBar.module.css"
-import { useWindowWidth } from "../hooks/useWindowSize"
+import { useWindowWidth } from "../pages/hooks/useWindowSize"
 import { useEffect, useState } from "react"
 
 export default function NavBar({elements}) {

@@ -4,11 +4,11 @@ import styles from '../styles/Home.module.css'
 
 //  Import des objets
 
-import NavBar from './components/nav'
+import NavBar from '../components/nav'
 
 //  Import des constantes
 
-import NavLinks from "./constantes/NavLinks"
+import NavLinks from "../constantes/NavLinks"
 
 export default function Home() {
   return (
