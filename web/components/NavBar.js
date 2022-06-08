@@ -26,7 +26,7 @@ export default function NavBar({elements}) {
                         </Link>
                         {width>=770?
                         <div className={`block w-auto`}>
-                            <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium ${styles.links}`}>
+                            <ul className={`flex flex-row text-sm ${styles.links}`}>
                                 {elements.map((element) => {return(
                                     <li key={element.title}>
                                         <Link href={element.link}>

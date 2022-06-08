@@ -1,12 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Playfair+Display:ital@1&display=swap');
 
 .title {
     font-family: 'Playfair Display', serif;
-}
-
-.links {
-    font-family: 'Montserrat', serif;
 }
 
 .links li a {
