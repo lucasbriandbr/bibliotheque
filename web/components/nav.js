@@ -1,5 +1,5 @@
 import Link from "next/link"
-import styles from "../../styles/NavBar.module.css"
+import styles from "../styles/NavBar.module.css"
 import { useWindowWidth } from "../pages/hooks/useWindowSize"
 import { useEffect, useState } from "react"
 
@@ -17,7 +17,7 @@ export default function NavBar({elements}) {
 
     return(
         <>
-            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"}`}>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""}`}>
                 <div className={`z-10 relative bg-[#faebd7] border-b-[1px] border-black`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
                         <Link href={"/"}>
