@@ -16,8 +16,7 @@ export default function NavBar({elements}) {
     },[width]);
 
     return(
-        <>
-            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""}`}>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} fixed w-full`}>
                 <div className={`z-10 relative bg-[#faebd7] border-b-[1px] border-black`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
                         <Link href={"/"}>
@@ -48,7 +47,7 @@ export default function NavBar({elements}) {
                         }
                     </div>
                 </div>
-                <div className={`z-0 relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"-translate-y-full"}`}>
+                <div className={`z-0 relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"hidden"}`}>
                     <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium`}>
                         {elements.map((element) => {return(
                             <li key={element.title}>
@@ -60,6 +59,5 @@ export default function NavBar({elements}) {
                     </ul>
                 </div>
             </nav>
-        </>
     )
 }
