@@ -14,7 +14,7 @@ export default function NavBar({elements}) {
 
                 <hr className={`border-black`} />
 
-                <div className={`p-[15px]`}>
+                <div className={`p-[30px]`}>
                     <div className={`grid gap-[15px] grid-cols-[repeat(3,_minmax(0,_1fr))]`}>
                         {elements.map((element) => {return(
                             

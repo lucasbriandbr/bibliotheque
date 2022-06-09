@@ -23,13 +23,35 @@ export default function Home() {
 
       <NavBar elements={NavLinks()}/>
 
-      <div className={`min-h-screen`}>
+      <div className={`flex items-end justify-center w-full min-h-[58vh] bg-[#F9F3EE] shadow-[rgba(_238,_230,_218,_0.9)_0px_-5vh_50px_-50px_inset]`}>
+        
+        <div className={`flex flex-row items-center justify-center translate-y-[2vh]`}>
+          
+          <div className={`h-[40vh] w-[25vh] border border-black border-[1px]`}></div>
+
+          <div className={`flex flex-col items-center justify-center h-[38vh] w-[2vh] border-black border-b-[1px] -skew-y-[45deg]`}>
+            
+            <div className={`flex flex-col items-center justify-center h-[38vh] w-[2vh] border-black border-t-[1px] skew-y-[65deg]`}> </div>
+
+          </div>
+
+          <div className={`flex flex-col items-center justify-center h-[36vh] w-[2vh] border-black border-l-[1px]`}></div>
+
+        </div>
 
       </div>
 
-      <p>8=D Madame ?</p>
+      <div className={`min-h-[7.5vh] bg-[#EEE7DC] shadow-[rgba(_232,_223,_207,_1)_0px_7.5vh_50px_-50px_inset]`}>
 
-      <p>8==========D Madame !</p>
+      </div>
+
+      <div className={`min-h-[4.5vh] bg-[#F2EEE9]`}>
+
+      </div>
+
+      <div className={`min-h-[30vh] bg-white shadow-[rgba(_188,_177,_158,_1)_0px_12vh_200px_-50px_inset]`}>
+
+      </div>
 
       <Footer elements={FootLinks()}/>
 

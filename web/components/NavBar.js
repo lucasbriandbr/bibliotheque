@@ -16,7 +16,7 @@ export default function NavBar({elements}) {
     },[width]);
 
     return(
-            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} sticky top-0 w-full`}>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} fixed top-0 w-full`}>
                 <div className={`z-10 relative bg-[#faebd7] border-b-[1px] border-black`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
                         <Link href={"/"}>
