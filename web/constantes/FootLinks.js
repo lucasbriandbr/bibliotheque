@@ -1,7 +1,7 @@
 export default function FootLinks() {
     return ([
         {title:"Ressources", pieces: [
-            {title: "Flowbite", link: "/"},
+            {title: "Admin", link: "/admin"},
             {title: "Tailwind CSS", link: "/"},
         ]},
         {title:"Follow Us", pieces: [
