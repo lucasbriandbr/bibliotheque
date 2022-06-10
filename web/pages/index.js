@@ -23,19 +23,13 @@ export default function Home() {
 
       <NavBar elements={NavLinks()}/>
 
-      <div className={`flex items-end justify-center w-full min-h-[58vh] bg-[#F9F3EE] shadow-[rgba(_238,_230,_218,_0.9)_0px_-5vh_50px_-50px_inset]`}>
+      <div className={`flex items-end justify-center w-full min-h-[68vh] bg-[#F9F3EE] shadow-[rgba(_238,_230,_218,_0.9)_0px_-5vh_50px_-50px_inset]`}>
         
-        <div className={`flex flex-row items-center justify-center translate-y-[2vh]`}>
+        <div className={`flex flex-row items-center justify-center`}>
           
-          <div className={`h-[40vh] w-[25vh] border border-black border-[1px]`}></div>
+          <img src={`https://imgs.search.brave.com/Drg5DEFQRMlQE2qN6gtThT3DIqJ_yKAuSS2VeeHL0iE/rs:fit:686:1080:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vNzM2/eC83OS80My84Yy83/OTQzOGM2NmYzYzJm/MzY4YjQwZDA0MDc2/NDY5ZDFmNS5qcGc`} className={`h-[50vh] w-[30vh] border border-black border-[1px] ${styles.couverture}`}/>
 
-          <div className={`flex flex-col items-center justify-center h-[38vh] w-[2vh] border-black border-b-[1px] -skew-y-[45deg]`}>
-            
-            <div className={`flex flex-col items-center justify-center h-[38vh] w-[2vh] border-black border-t-[1px] skew-y-[65deg]`}> </div>
-
-          </div>
-
-          <div className={`flex flex-col items-center justify-center h-[36vh] w-[2vh] border-black border-l-[1px]`}></div>
+          <div className={`${styles.tranche}`}></div>
 
         </div>
 
@@ -49,7 +43,7 @@ export default function Home() {
 
       </div>
 
-      <div className={`min-h-[30vh] bg-white shadow-[rgba(_188,_177,_158,_1)_0px_12vh_200px_-50px_inset]`}>
+      <div className={`min-h-[20vh] bg-white shadow-[rgba(_188,_177,_158,_1)_0px_12vh_200px_-50px_inset]`}>
 
       </div>
 

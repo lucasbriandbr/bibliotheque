@@ -1,0 +1,8 @@
+.tranche {
+    width:20px;
+    height:calc(50vh - 13px);
+    border: 1px solid black;
+    border-left: 0px;
+    background:url(https://thumbs.dreamstime.com/b/tranche-de-livre-%C3%A9crite-dans-le-chinois-litt%C3%A9rature-chine-123978570.jpg);
+    transform: perspective(calc(50vh - 13px)) rotateY(25deg); 
+}
