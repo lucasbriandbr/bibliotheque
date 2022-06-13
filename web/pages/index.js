@@ -23,7 +23,7 @@ export default function Home() {
 
       <div className={`flex h-[100vh] items-center justify-center`}>
 
-          <p>Bienvenue sur la page d'accueil</p>
+          <p>Bienvenue sur la page d&apos;accueil</p>
 
       </div>
 
