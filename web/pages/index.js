@@ -29,7 +29,7 @@ export default function Home() {
           
           <img src={`https://imgs.search.brave.com/Drg5DEFQRMlQE2qN6gtThT3DIqJ_yKAuSS2VeeHL0iE/rs:fit:686:1080:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vNzM2/eC83OS80My84Yy83/OTQzOGM2NmYzYzJm/MzY4YjQwZDA0MDc2/NDY5ZDFmNS5qcGc`} className={`h-[50vh] w-[30vh] ${styles.couverture}`}/>
 
-          <div className={`${styles.tranche}`}></div>
+          <div className={`${styles.couvertureext}`}><div className={`${styles.tranche}`}></div></div>
 
         </div>
 
