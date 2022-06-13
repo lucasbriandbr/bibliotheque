@@ -10,11 +10,11 @@ import Footer from '../../components/Footer'
 import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 
-export default function Admin() {
+export default function Help() {
     return(
         <>
         <Head>
-            <title>Admin - Alexandria</title>
+            <title>Help - Alexandria</title>
             <meta name="description" content="Written with Heart" />
             <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -23,7 +23,7 @@ export default function Admin() {
 
             <div className={`flex h-[100vh] items-center justify-center`}>
 
-                <p>Bienvenue dans l&apos;espace administrateur</p>
+                <p>Bienvenue dans le centre d&apos;Aide</p>
 
             </div>
 

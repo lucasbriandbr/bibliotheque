@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styles from "../styles/NavBar.module.css"
-import { useWindowWidth } from "../pages/hooks/useWindowSize"
+import { useWindowWidth } from "../hooks/useWindowSize"
 import { useEffect, useState } from "react"
 
 export default function NavBar({elements}) {
@@ -16,8 +16,9 @@ export default function NavBar({elements}) {
     },[width]);
 
     return(
-            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} fixed top-0 w-full`}>
-                <div className={`z-10 relative bg-[#faebd7] border-b-[1px] border-black`}>
+        <>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} fixed top-0 w-full z-10`}>
+                <div className={`relative bg-[#faebd7] border-b-[1px] border-black`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
                         <Link href={"/"}>
                             <a className={`flex ml-6 items-center ${styles.title}`}>
@@ -30,7 +31,7 @@ export default function NavBar({elements}) {
                                 {elements.map((element) => {return(
                                     <li key={element.title}>
                                         <Link href={element.link}>
-                                            <a className={`flex text-black uppercase transition-colors duration-200 ease-in-out hover:bg-white text-xs`}>{element.title}</a>
+                                            <a className={`flex text-black uppercase transition-colors duration-200 ease-in-out hover:bg-[#F9F3EE] text-xs`}>{element.title}</a>
                                         </Link>
                                     </li>
                                 )})}
@@ -47,7 +48,7 @@ export default function NavBar({elements}) {
                         }
                     </div>
                 </div>
-                <div className={`z-0 relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"hidden"}`}>
+                <div className={`relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"hidden"}`}>
                     <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium`}>
                         {elements.map((element) => {return(
                             <li key={element.title}>
@@ -59,5 +60,8 @@ export default function NavBar({elements}) {
                     </ul>
                 </div>
             </nav>
+
+            <div className={`${width>=770?" h-[47px]":"h-[50px]"}`}></div>
+        </>
     )
 }

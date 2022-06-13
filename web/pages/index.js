@@ -21,7 +21,11 @@ export default function Home() {
 
       <NavBar elements={NavLinks()}/>
 
-      <div className={`h-[100vh]`}></div>
+      <div className={`flex h-[100vh] items-center justify-center`}>
+
+          <p>Bienvenue sur la page d'accueil</p>
+
+      </div>
 
       <Footer elements={FootLinks()}/>
 
