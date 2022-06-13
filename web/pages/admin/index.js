@@ -23,7 +23,7 @@ export default function admin() {
 
             <div className={`flex h-[100vh] items-center justify-center`}>
 
-                <p>Bienvenue dans l'espace administrateur</p>
+                <p>Bienvenue dans l&apos;espace administrateur</p>
 
             </div>
 
