@@ -39,7 +39,7 @@ export default function Search() {
 
                 </div>
 
-                <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 min-h-[55vh] bg-white text-white p-8 gap-8`}>
+                <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
                     <Card src={`/img/books/book-4.jpg`}/>
 
