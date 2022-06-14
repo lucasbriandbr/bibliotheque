@@ -2,15 +2,19 @@ import Link from "next/link"
 import Image from "next/image"
 import styles from "../styles/Card.module.css"
 
-export default function Card({src}) {
+export default function Card({src, title, author, serie, tome, }) {
     return(
-        <div className={`flex flex-row text-black h-full w-full rounded-lg border-[1px] border-gray-300 ${styles.card}`}>
-            <Link href={`/`}>
-                <a>
-                    <img src={src} alt={`Une couverture de livre`} className={`h-full w-auto rounded-lg`}/>
-                </a>
-            </Link>
-            {/* <div><p>Petit caca oupps encore aaaaah</p></div> */}
-        </div>
+        <Link href={`/`}>
+            <a className={`flex flex-col text-black rounded-lg border-[1px] border-gray-300 ${styles.card}`}>
+                <img src={src} alt={`Une couverture de livre`} className={`rounded-lg h-full w-full`}/>
+                <div className={`flex flex-col p-4`}>
+
+                    <p className={`text-sm font-semibold`}>{title}{serie===true?<span className={`text-xs font-normal`}> - Tome {tome.toString()}</span>:""}</p>
+
+                    <p className={`text-xs italic`}>{author}</p>
+
+                </div>
+            </a>
+        </Link>
     )
 }

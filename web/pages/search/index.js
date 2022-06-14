@@ -10,6 +10,7 @@ import Card from '../../components/Card'
 
 import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
+import Books from '../../constantes/Books'
 
 export default function Search() {
 
@@ -41,23 +42,9 @@ export default function Search() {
 
                 <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
-                    <Card src={`/img/books/book-4.jpg`}/>
-
-                    <Card src={`/img/books/book-5.jpeg`}/>
-
-                    <Card src={`/img/books/book-1.jpg`}/>
-
-                    <Card src={`/img/books/book-6.webp`}/>
-
-                    <Card src={`/img/books/book-3.jpg`}/>
-
-                    <Card src={`/img/books/book-7.jpg`}/>
-
-                    <Card src={`/img/books/book-2.jpeg`}/>
-
-                    <Card src={`/img/books/book-8.jpg`}/>
-
-                    <Card src={`/img/books/book-9.jpg`}/>
+                    {Books().map((book)=>{return(
+                        <Card src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome}/>
+                    )})}
 
                 </div>
 
