@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
+import Card from '../../components/Card'
 
 //  Import des constantes
 
@@ -38,15 +39,15 @@ export default function Search() {
 
                 </div>
 
-                <div className={`grid grid-cols-4 min-h-[55vh] bg-white text-white p-8 gap-8`}>
+                <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
-                    <div className={`flex h-[350px] w-full rounded-lg border-[1px] transition-all duration-500 ease-in-out border-gray-300 hover:shadow-[rgba(_14,_30,_37,_0.06)_0px_2px_4px_0px,_rgba(_14,_30,_37,_0.16)_0px_2px_16px_0px]`}></div>
+                    <Card src={`/img/books/book-4.jpg`}/>
 
-                    <div className={`flex h-[350px] w-full rounded-lg border-[1px] transition-all duration-500 ease-in-out border-gray-300 hover:shadow-[rgba(_14,_30,_37,_0.06)_0px_2px_4px_0px,_rgba(_14,_30,_37,_0.16)_0px_2px_16px_0px]`}></div>
+                    <Card src={`/img/books/book-1.jpg`}/>
 
-                    <div className={`flex h-[350px] w-full rounded-lg border-[1px] transition-all duration-500 ease-in-out border-gray-300 hover:shadow-[rgba(_14,_30,_37,_0.06)_0px_2px_4px_0px,_rgba(_14,_30,_37,_0.16)_0px_2px_16px_0px]`}></div>
+                    <Card src={`/img/books/book-3.jpg`}/>
 
-                    <div className={`flex h-[350px] w-full rounded-lg border-[1px] transition-all duration-500 ease-in-out border-gray-300 hover:shadow-[rgba(_14,_30,_37,_0.06)_0px_2px_4px_0px,_rgba(_14,_30,_37,_0.16)_0px_2px_16px_0px]`}></div>
+                    <Card src={`/img/books/book-2.jpeg`}/>
 
                 </div>
 
