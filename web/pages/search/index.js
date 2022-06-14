@@ -39,15 +39,25 @@ export default function Search() {
 
                 </div>
 
-                <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 min-h-[55vh] bg-white text-white p-8 gap-8`}>
+                <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
                     <Card src={`/img/books/book-4.jpg`}/>
 
+                    <Card src={`/img/books/book-5.jpeg`}/>
+
                     <Card src={`/img/books/book-1.jpg`}/>
+
+                    <Card src={`/img/books/book-6.webp`}/>
 
                     <Card src={`/img/books/book-3.jpg`}/>
 
+                    <Card src={`/img/books/book-7.jpg`}/>
+
                     <Card src={`/img/books/book-2.jpeg`}/>
+
+                    <Card src={`/img/books/book-8.jpg`}/>
+
+                    <Card src={`/img/books/book-9.jpg`}/>
 
                 </div>
 
