@@ -10,9 +10,9 @@ export default function NavBar({elements}) {
     const current = new Date()
 
     return(
-            <footer className={`bg-[#faebd7]`}>
+            <footer className={`bg-black text-white`}>
 
-                <hr className={`border-black`} />
+                {/* <hr className={`border-gray-400`} /> */}
 
                 <div className={`p-[30px]`}>
                     <div className={`grid gap-[15px] grid-cols-[repeat(3,_minmax(0,_1fr))]`}>
@@ -37,7 +37,7 @@ export default function NavBar({elements}) {
                     </div>
                 </div>
 
-                <hr className={`border-black`} />
+                <hr className={`border-gray-800`}/>
 
                 <div className={`flex flex-row items-center align-center justify-between p-[15px] text-xs`}>
                     <p>Written with heart</p>
