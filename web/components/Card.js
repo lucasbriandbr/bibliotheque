@@ -2,9 +2,9 @@ import Link from "next/link"
 import Image from "next/image"
 import styles from "../styles/Card.module.css"
 
-export default function Card({src, title, author, serie, tome, note, }) {
+export default function Card({src, title, author, serie, tome, note, sku, }) {
     return(
-        <Link href={`/`}>
+        <Link href={`/book/${sku}`}>
             <a className={`flex flex-col text-black rounded-lg border-[1px] border-gray-300 ${styles.card}`}>
                 <img src={src} alt={`Une couverture de livre`} className={`rounded-lg h-full w-full`}/>
                 <div className={`flex flex-col p-4`}>
