@@ -35,14 +35,14 @@ export default function Connexion() {
                     
                     {state?
                     <>
-                        <h3 className='block font-medium text-2xl px-5 py-2.5 mb-4'>Sign In</h3>
+                        <h3 className='block font-medium text-2xl px-5 py-2.5 mb-4'>Sign Up</h3>
                         <input type="text" className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mb-4 focus:outline-none" placeholder='Mail'/>
                         <input type="password" className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mb-4 focus:outline-none" placeholder='Password'/>
                         <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mb-4">Connect</button>
                     </>
                     :
                     <>
-                        <h3 className='block font-medium text-2xl px-5 py-2.5 mb-4'>Sign Up</h3>
+                        <h3 className='block font-medium text-2xl px-5 py-2.5 mb-4'>Sign In</h3>
                         <input type="text" className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mb-4 focus:outline-none" placeholder='Mail'/>
                         <input type="password" className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mb-4 focus:outline-none" placeholder='Password'/>
                         <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mb-4">Connect</button>
