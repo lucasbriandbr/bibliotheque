@@ -12,7 +12,7 @@ export default function NavBar({elements}) {
     return(
             <footer className={`bg-black text-white`}>
 
-                {/* <hr className={`border-gray-400`} /> */}
+                <hr className={`border-gray-800`} />
 
                 <div className={`p-[30px]`}>
                     <div className={`grid gap-[15px] grid-cols-[repeat(3,_minmax(0,_1fr))]`}>
