@@ -68,7 +68,7 @@ export default function Connexion() {
                         <p className={`text-xs w-full text-red-600 font-medium mt-1`}>{error}</p>
                     </>
                     :
-                    <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100">Se connecter</button>
+                    <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{router.push('/')}}>Se connecter</button>
                     }
                     <p className='flex flex-col text-center font-normal text-xs px-5 py-2.5 mt-4'>{state?"Déjà inscrit ?":"Pas encore inscrit ?"}<button type="button" className='block font-medium text-xs mt-2 underline' onClick={()=>{setState(!state)}}>{state?"Connexion":"Inscription"}</button></p>
 
