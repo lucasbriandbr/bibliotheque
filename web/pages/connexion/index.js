@@ -64,7 +64,7 @@ export default function Connexion() {
                     {state?
                     <>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
-                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{verifyData(mail, psswd, psswdConfirm)}}>S'enregistrer</button>
+                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{verifyData(mail, psswd, psswdConfirm)}}>S&apos;enregistrer</button>
                         <p className={`text-xs w-full text-red-600 font-medium mt-1`}>{error}</p>
                     </>
                     :
