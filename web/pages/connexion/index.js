@@ -12,6 +12,10 @@ import Footer from '../../components/Footer'
 import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 
+//  Import des functions
+
+import inscription from '../../fonctionsutiles/inscription'
+
 export default function Connexion() {
 
     const [ state , setState ] = useState(false)
@@ -20,24 +24,9 @@ export default function Connexion() {
     const [ psswd , setPsswd ] = useState("")
     const [ psswdConfirm , setPsswdConfirm ] = useState("")
 
-    const [ error , setError ] = useState("")
+    const [ error , setError ] = useState()
 
     const router = useRouter()
-
-    function verifyData(email, password, passwordConfirm) {
-        
-        if (password!=passwordConfirm) {
-            setError('Les mots de passe ne correspondent pas.')
-        } else {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)===false) {
-                setError('Votre aresse mail est invalide.')
-            } else {
-                setError('')
-                router.push('/')
-            }
-        }
-
-    }
 
     return(
         <>
@@ -64,8 +53,9 @@ export default function Connexion() {
                     {state?
                     <>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
-                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{verifyData(mail, psswd, psswdConfirm)}}>S&apos;enregistrer</button>
-                        <p className={`text-xs w-full text-red-600 font-medium mt-1`}>{error}</p>
+                    <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
+                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError(inscription(mail, psswd, psswdConfirm))}}>S&apos;enregistrer</button>
+                        {error}
                     </>
                     :
                     <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{router.push('/')}}>Se connecter</button>

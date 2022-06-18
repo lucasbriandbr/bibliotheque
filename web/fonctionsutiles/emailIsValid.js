@@ -1,0 +1,1 @@
+export default function emailIsValid(email){if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)===true){return(true)}else{return(false)}}
