@@ -1,11 +1,12 @@
 import psswdIsValid from "./psswdIsValid"
 import emailIsValid from "./emailIsValid"
+import styles from "../styles/Error.module.css"
 
 export default function inscription(email,password,passwordConfirm){
-    if(emailIsValid(email)===false){return(<p className={`text-xs w-full text-red-600 font-medium mt-1`}>Votre email n'est pas valide.</p>)}else{
-        if(psswdIsValid(password)===false){return(<p className={`text-xs w-full text-red-600 font-medium mt-1`}>Votre mot de passe ne correespond pas au format requis.</p>)}else{
-            if (password!==passwordConfirm) {return(<p className={`text-xs w-full text-red-600 font-medium mt-1`}>Les mots de passe ne correspondent pas.</p>)}else{
-                return(<p className={`text-xs w-full text-green-600 font-medium mt-1`}>Toutes vos informations sont au bon format.</p>)
+    if(emailIsValid(email)===false){return(<p className={styles.errorInvalid}>Votre email n'est pas valide.</p>)}else{
+        if(psswdIsValid(password)===false){return(<p className={styles.errorInvalid}>Votre mot de passe ne correespond pas au format requis.</p>)}else{
+            if (password!==passwordConfirm) {return(<p className={styles.errorInvalid}>Les mots de passe ne correspondent pas.</p>)}else{
+                return(<p className={styles.errorValid}>Toutes vos informations sont au bon format.</p>)
             }
         }
     }

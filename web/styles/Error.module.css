@@ -1,0 +1,17 @@
+.errorValid{
+    font-size: 0.75rem;
+    line-height: 1rem;
+    width: 100%;
+    color: rgb(22 163 74);
+    font-weight: 500;
+    margin-top: 0.25rem; /* 4px */
+}
+
+.errorInvalid{
+    font-size: 0.75rem;
+    line-height: 1rem;
+    width: 100%;
+    color: rgb(220 38 38);
+    font-weight: 500;
+    margin-top: 0.25rem; /* 4px */
+}
