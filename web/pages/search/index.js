@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 //  Import des objets
 
@@ -14,9 +16,25 @@ import Books from '../../constantes/Books'
 
 export default function Search() {
 
+    const [ state, setState ] = useState(1)
+    const [ page, setPage ] = useState(1)
+    const [ elements, setElements ] = useState(6)
+
     function research(value) {
         console.log(`Changement dans la barre de recherche `+value)
     }
+
+    function calcPage() {
+        if (Books().length%elements>0) {
+            setPage(~~(Books().length/elements)+1)
+        }else{
+            setPage(~~(Books().length/elements))
+        }
+    }
+
+    useEffect(() => {
+        calcPage()
+    },[state])
 
     return(
         <>
@@ -42,9 +60,29 @@ export default function Search() {
 
                 <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
-                    {Books().map((book)=>{return(
+                    {Books().slice((state-1)*elements,state*elements).map((book)=>{return(
                         <Card key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
                     )})}
+
+                </div>
+
+                <div className="flex flex-col items-center">
+                    
+                    <p className="text-sm text-gray-800">Produits <span className="font-semibold text-gray-800">{(state-1)*elements+1}</span> à <span className="font-semibold text-gray-800">{Books().slice(0,(state-1)*elements).length+Books().slice((state-1)*elements,state*elements).length}</span> sur <span className="font-semibold text-gray-800">{Books().length}</span></p>
+                    
+                    <div className="inline-flex mt-2 xs:mt-0 mb-8">
+
+                        <button className="flex flex-row items-center justify-center py-2 px-4 mr-3 text-sm font-medium text-black bg-white rounded-lg border-[1px] border-black" onClick={()=>{state!=1?setState(state-1):''}}>
+                            <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path></svg>
+                            Previous
+                        </button>
+
+                        <button className="flex flex-row items-center justify-center py-2 px-4 text-sm font-medium text-black bg-white rounded-lg border-[1px] border-black" onClick={()=>{state!=page?setState(state+1):''}}>
+                            Next
+                            <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </button>
+
+                    </div>
 
                 </div>
 
