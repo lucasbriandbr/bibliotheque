@@ -68,7 +68,7 @@ export default function Search() {
 
                 <div className="flex flex-col items-center">
                     
-                    <p className="text-sm text-gray-800">Produits <span className="font-semibold text-gray-800">{(state-1)*elements+1}</span> à <span className="font-semibold text-gray-800">{Books().slice(0,(state-1)*elements).length+Books().slice((state-1)*elements,state*elements).length}</span> sur <span className="font-semibold text-gray-800">{Books().length}</span></p>
+                    <p className="text-sm text-gray-800">Page <span className="font-semibold text-gray-800">{state}</span> sur <span className="font-semibold text-gray-800">{page}</span></p>
                     
                     <div className="inline-flex mt-2 xs:mt-0 mb-8">
 

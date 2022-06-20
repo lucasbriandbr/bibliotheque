@@ -2,14 +2,17 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-async function main() {
-  // ... you will write your Prisma Client queries here
-}
+export default async function main() {
+  await prisma.user.create({
+    data: {
+      name: 'Jane',
+      email: 'jane@doe.com',
+      profile: {
+        create: { bio: 'I like turtles, and my name is Jane Doe' },
+      },
+    },
+  })
 
-main()
-  .catch((e) => {
-    throw e
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+  // const allUsers = await prisma.user.findMany()
+  // return(allUsers)
+}

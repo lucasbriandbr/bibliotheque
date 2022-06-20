@@ -13,10 +13,10 @@ import FootLinks from "../../constantes/FootLinks"
 export default function Admin() {
     return(
         <>
-        <Head>
-            <title>Admin - Alexandria</title>
-            <meta name="description" content="Written with Heart" />
-            <link rel="icon" href="/favicon.ico" />
+            <Head>
+                <title>Admin - Alexandria</title>
+                <meta name="description" content="Written with Heart" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
     
             <NavBar elements={NavLinks()}/>
