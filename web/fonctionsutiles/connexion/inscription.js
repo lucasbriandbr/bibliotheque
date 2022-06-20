@@ -1,6 +1,6 @@
-import psswdIsValid from "./psswdIsValid"
-import emailIsValid from "./emailIsValid"
-import styles from "../styles/Error.module.css"
+import psswdIsValid from "../validateurs/psswdIsValid"
+import emailIsValid from "../validateurs/emailIsValid"
+import styles from "../../styles/Error.module.css"
 
 export default function inscription(email,password,passwordConfirm){
     if(emailIsValid(email)===false){return(<p className={styles.errorInvalid}>Votre email n'est pas valide.</p>)}else{
