@@ -30,8 +30,8 @@ export default function Home() {
 
       </div>
 
-      <div className='flex flex-row pt-8 pr-8 pl-8 w-full items-center justify-center'>
-        <h1>Nouveautés</h1>
+      <div className='flex flex-row p-8 w-full items-center justify-center'>
+        <h1>Les mieux notés</h1>
       </div>
 
       <div className={`grid grid-cols-5 bg-white text-white p-4 gap-4`}>
