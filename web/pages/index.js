@@ -13,6 +13,7 @@ import FootLinks from "../constantes/FootLinks"
 import Books from "../constantes/Books"
 
 export default function Home() {
+
   return (
     <>
       <Head>
@@ -33,17 +34,11 @@ export default function Home() {
         <h1>Nouveautés</h1>
       </div>
 
-      <div className={`flex flex-row bg-white text-white p-8 gap-8 overflow-x-scroll overflow-y-hidden`}>
-        
-        <BigCard src={Books()[0].imgsrc} title={Books()[0].title} author={Books()[0].author} serie={Books()[0].serie} tome={Books()[0].tome} note={Books()[0].note} sku={Books()[0].sku}/>
-        
-        <BigCard src={Books()[1].imgsrc} title={Books()[1].title} author={Books()[1].author} serie={Books()[1].serie} tome={Books()[1].tome} note={Books()[1].note} sku={Books()[1].sku}/>
-        
-        <BigCard src={Books()[2].imgsrc} title={Books()[2].title} author={Books()[2].author} serie={Books()[2].serie} tome={Books()[2].tome} note={Books()[2].note} sku={Books()[2].sku}/>
-        
-        <BigCard src={Books()[3].imgsrc} title={Books()[3].title} author={Books()[3].author} serie={Books()[3].serie} tome={Books()[3].tome} note={Books()[3].note} sku={Books()[3].sku}/>
-        
-        <BigCard src={Books()[4].imgsrc} title={Books()[4].title} author={Books()[4].author} serie={Books()[4].serie} tome={Books()[4].tome} note={Books()[4].note} sku={Books()[4].sku}/>
+      <div className={`grid grid-cols-5 bg-white text-white pl-4 pr-4 pb-4 gap-4`}>
+
+        {Books().sort(function(a,b){return(b.note - a.note)}).slice(0,5).map((book)=>{return(
+          <BigCard src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
+        )})}
 
       </div>
 
