@@ -30,7 +30,7 @@ export default function Home() {
 
       </div>
 
-      <div className='flex flex-row p-8 w-full items-center justify-center'>
+      <div className='flex flex-row p-8 w-full items-center justify-center uppercase'>
         <h1>Les mieux notés</h1>
       </div>
 
