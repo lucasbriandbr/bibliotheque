@@ -16,15 +16,15 @@ import Books from '../../constantes/Books'
 
 export default function Search() {
 
-    const [ state, setState ] = useState(1)
-    const [ page, setPage ] = useState(1)
-    const [ elements, setElements ] = useState(25)
-
-    function research(value) {
-        console.log(`Changement dans la barre de recherche `+value)
-    }
-
     useEffect(() => {
+
+        const [ state, setState ] = useState(1)
+        const [ page, setPage ] = useState(1)
+        const [ elements, setElements ] = useState(25)
+    
+        function research(value) {
+            console.log(`Changement dans la barre de recherche `+value)
+        }
 
         function calcPage() {
             if (Books().length%elements>0) {
