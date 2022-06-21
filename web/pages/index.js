@@ -37,7 +37,7 @@ export default function Home() {
       <div className={`grid grid-cols-5 bg-white text-white pl-4 pr-4 pb-4 gap-4`}>
 
         {Books().sort(function(a,b){return(b.note - a.note)}).slice(0,5).map((book)=>{return(
-          <BigCard src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
+          <BigCard key={book.sku} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
         )})}
 
       </div>
