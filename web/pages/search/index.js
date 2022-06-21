@@ -16,27 +16,25 @@ import Books from '../../constantes/Books'
 
 export default function Search() {
 
-    useEffect(() => {
+    const [ state, setState ] = useState(1)
+    const [ page, setPage ] = useState(1)
+    const [ elements, setElements ] = useState(25)
 
-        const [ state, setState ] = useState(1)
-        const [ page, setPage ] = useState(1)
-        const [ elements, setElements ] = useState(25)
-    
-        function research(value) {
-            console.log(`Changement dans la barre de recherche `+value)
+    function research(value) {
+        console.log(`Changement dans la barre de recherche `+value)
+    }
+
+    function calcPage() {
+        if (Books().length%elements>0) {
+            setPage(~~(Books().length/elements)+1)
+        }else{
+            setPage(~~(Books().length/elements))
         }
+    }
 
-        function calcPage() {
-            if (Books().length%elements>0) {
-                setPage(~~(Books().length/elements)+1)
-            }else{
-                setPage(~~(Books().length/elements))
-            }
-        }
-
-        calcPage()
-        
-    },[state])
+    // useEffect(()=>{
+    //     calcPage()
+    // },[state])
 
     return(
         <>
