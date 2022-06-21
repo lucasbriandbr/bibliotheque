@@ -1,6 +1,6 @@
-// const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require('@prisma/client')
 
-// const prisma = new PrismaClient()
+const prisma = new PrismaClient()
     
 // async function main() {
 //     const allUsers = await prisma.user.findMany()
@@ -56,3 +56,9 @@
 //     .finally(async () => {
 //         await prisma.$disconnect()
 //     })
+
+export default function users() {
+    return(
+        'coucou pétasse'
+        )
+}
