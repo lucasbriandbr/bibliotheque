@@ -24,16 +24,18 @@ export default function Search() {
         console.log(`Changement dans la barre de recherche `+value)
     }
 
-    function calcPage() {
-        if (Books().length%elements>0) {
-            setPage(~~(Books().length/elements)+1)
-        }else{
-            setPage(~~(Books().length/elements))
-        }
-    }
-
     useEffect(() => {
+
+        function calcPage() {
+            if (Books().length%elements>0) {
+                setPage(~~(Books().length/elements)+1)
+            }else{
+                setPage(~~(Books().length/elements))
+            }
+        }
+
         calcPage()
+        
     },[state])
 
     return(
