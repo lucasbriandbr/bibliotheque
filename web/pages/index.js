@@ -31,10 +31,10 @@ export default function Home() {
       </div>
 
       <div className={`flex flex-row p-8 w-full items-center justify-center uppercase police`}>
-        <h1>Les mieux notés</h1>
+        <h1>Les mieux notés</h1>  {/* Comprend les meilleurs notes en fonction du plus grand nombre d'avis. Exemple : 5* et 10 avis passe derriere 5* et 200 avis */}
       </div>
 
-      <div className={`grid grid-cols-5 bg-white text-white p-4 gap-4`}>
+      <div className={`flex flex-rowbg-white text-white p-4 gap-4 overflow-x-scroll`}>
 
         {Books().sort(function(a,b){return(b.note - a.note)}).slice(0,5).map((book)=>{return(
           <BigCard key={book.sku} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
