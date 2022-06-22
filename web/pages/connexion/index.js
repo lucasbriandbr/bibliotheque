@@ -53,14 +53,14 @@ export default function Connexion() {
                     <div className={`h-full md:w-1/2 lg:w-1/2 items-center justify-center`}>                        
 
                         <h3 className='block font-medium text-2xl mt-4'>Connexion</h3>
-                        <p className={`text-xs w-full font-medium mt-4`}>Dis, tu traines souvent dans le coin ? Il me semble t'avoir déjà vu passer dans le coin...</p>
+                        <p className={`text-xs w-full font-medium mt-4`}>Dis, tu traines souvent dans le coin ? Il me semble t&apos;avoir déjà vu passer dans le coin...</p>
                         <input type="text" id='Email1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail1(document.getElementById('Email1').value)}}/>
                         <input type="password" id='Psswd1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd1(document.getElementById('Psswd1').value)}}/>
                         <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError1(connexion(mail1, psswd1))}}>Se connecter</button>
                         {error1}
 
                         <h3 className='block font-medium text-2xl mt-4'>Inscription</h3>
-                        <p className={`text-xs w-full font-medium mt-4`}>On ne s'est jamais vus, j'aurai tenté. Mais on a hâte de te rencontrer !</p>
+                        <p className={`text-xs w-full font-medium mt-4`}>On ne s&apos;est jamais vus, j&apos;aurai tenté. Mais on a hâte de te rencontrer !</p>
                         <input type="text" id='Email2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail2(document.getElementById('Email2').value)}}/>
                         <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
