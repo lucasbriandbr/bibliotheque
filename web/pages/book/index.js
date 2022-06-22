@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-
 export default function Book() {
+    return("404 error : the page you are looking for doesn't exist.")
+}
 
-    const router = useRouter()
-    
-    useEffect(() => {
-        router.push('/explore')
-    })
-
+export function getServerSideProps() {
+    return {
+        redirect: {
+            destination: "/explore",
+            permanent: true,
+        },
+    };
 }
