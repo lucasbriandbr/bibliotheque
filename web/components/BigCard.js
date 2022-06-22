@@ -27,11 +27,11 @@ export default function BigCard({ src, title, author, serie, tome, note, sku }) 
 
     return(
         <Link href={`/book/${sku}`}>
-            <a className={`relative flex items-end text-black rounded-lg min-h-[20vh] min-w-[5vw]`}>
+            <a className={`relative flex items-end rounded-lg text-gray-600 hover:text-black rounded-lg min-h-[20vh] min-w-[5vw] ${styles.bigCardHover}`}>
 
                 <img src={src} alt={`Une couverture de livre`} className={`flex absolute bottom-4 left-4 self-start justify-self-start h-full w-auto ${styles.image} rounded-lg`}/>
 
-                <div className={`static grid grid-cols-2 ${switchColor()} w-full rounded-lg h-2/3`}>
+                <div className={`static grid grid-cols-2 ${switchColor()} w-full rounded-lg h-2/3 ${styles.blocTexte}`}>
 
                     <div></div>
 

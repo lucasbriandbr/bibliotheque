@@ -1,9 +1,9 @@
 export default function NavLinks() {
     return ([
-        {title:"Home", link:"/"},
-        {title:"Shop", link:"/shop"},
-        {title:"Search", link:"/search"},
-        {title:"Blog", link:"/blog"},
-        {title:"Connexion", link:"/connexion"},
+        { title:"Home", link:"/", path:`` },
+        { title:"Shop", link:"/shop", path:`` },
+        { title:"Search", link:"/search", path:`` },
+        { title:"Blog", link:"/blog", path:`` },
+        { title:"Connexion", link:"/connexion", path:`` },
     ])
 }
