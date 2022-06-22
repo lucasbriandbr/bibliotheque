@@ -19,13 +19,16 @@ import connexion from '../../fonctionsutiles/connexion/connexion'
 
 export default function Connexion() {
 
-    const [ state , setState ] = useState(false)
+    // const [ state , setState ] = useState(false)
 
-    const [ mail , setMail ] = useState("")
-    const [ psswd , setPsswd ] = useState("")
+    const [ mail1 , setMail1 ] = useState("")
+    const [ psswd1 , setPsswd1 ] = useState("")
+    const [ mail2 , setMail2 ] = useState("")
+    const [ psswd2 , setPsswd2 ] = useState("")
     const [ psswdConfirm , setPsswdConfirm ] = useState("")
 
-    const [ error , setError ] = useState()
+    const [ error1 , setError1 ] = useState()
+    const [ error2 , setError2 ] = useState()
 
     const router = useRouter()
 
@@ -39,32 +42,33 @@ export default function Connexion() {
     
             <NavBar elements={NavLinks()}/>
 
-            <div className={`flex flex-row h-[95vh] w-full bg-white`}>
+            <div className={`flex flex-row h-[100%] w-full bg-white`}>
                 
-                <div className={`hidden lg:flex h-full w-full border-r-[1px] border-gray-300 justify-center items-center`}>
-                   <img src={`/img/bibliotheque-5.webp`} alt={`Une couverture de livre`} className={`flex h-full w-auto object-contain`}/>
+                <div className={`hidden lg:flex border-r-[1px] border-gray-300 justify-center items-center`}>
+                   <img src={`/img/bibliotheque-5.webp`} alt={`Une couverture de livre`} className={``}/>
                 </div>
 
-                <div className={`flex flex-col h-full w-full p-4 items-center lg:justify-center p-[10vw]`}>
+                <div className={`flex flex-col h-full w-full p-8 items-center justify-center`}>
 
-                    <h3 className='block font-medium text-2xl px-5 py-2.5 mt-4'>{state?"Inscription":"Connexion"}</h3>
-                    <input type="text" id='Email' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail(document.getElementById('Email').value)}}/>
-                    <input type="password" id='Psswd' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd(document.getElementById('Psswd').value)}}/>
-                    
-                    {state?
-                    <>
+                    <div className={`h-full md:w-1/2 lg:w-1/2 items-center justify-center`}>                        
+
+                        <h3 className='block font-medium text-2xl mt-4'>Connexion</h3>
+                        <p className={`text-xs w-full font-medium mt-4`}>Dis, tu traines souvent dans le coin ? Il me semble t'avoir déjà vu passer dans le coin...</p>
+                        <input type="text" id='Email1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail1(document.getElementById('Email1').value)}}/>
+                        <input type="password" id='Psswd1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd1(document.getElementById('Psswd1').value)}}/>
+                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError1(connexion(mail1, psswd1))}}>Se connecter</button>
+                        {error1}
+
+                        <h3 className='block font-medium text-2xl mt-4'>Inscription</h3>
+                        <p className={`text-xs w-full font-medium mt-4`}>On ne s'est jamais vus, j'aurai tenté. Mais on a hâte de te rencontrer !</p>
+                        <input type="text" id='Email2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail2(document.getElementById('Email2').value)}}/>
+                        <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
                         <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
-                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError(inscription(mail, psswd, psswdConfirm))}}>S&apos;enregistrer</button>
-                        {error}
-                    </>
-                    :
-                    <>
-                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError(connexion(mail, psswd))}}>Se connecter</button>
-                        {error}
-                    </>
-                    }
-                    <p className='flex flex-col text-center font-normal text-xs px-5 py-2.5 mt-4'>{state?"Déjà inscrit ?":"Pas encore inscrit ?"}<button type="button" className='block font-medium text-xs mt-2 underline' onClick={()=>{setState(!state)}}>{state?"Connexion":"Inscription"}</button></p>
+                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError2(inscription(mail2, psswd2, psswdConfirm))}}>S&apos;enregistrer</button>
+                        {error2}
+
+                    </div>
 
                 </div>
 
