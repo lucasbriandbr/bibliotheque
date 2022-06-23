@@ -1,4 +1,4 @@
-export default function Books() {
+export default function BookStatik() {
     return ([
         {title:"Akira", serie:true, tome:2, imgsrc:"/img/books/book-1.jpg", author:"Katsuhiro Otomo", note:"4.0", editeur:"", isbn:"", sku:"5129563", },
         {title:"Akira", serie:true, tome:6, imgsrc:"/img/books/book-2.jpeg", author:"Katsuhiro Otomo", note:"5.0", editeur:"", isbn:"", sku:"4129563", },

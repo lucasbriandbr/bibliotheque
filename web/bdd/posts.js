@@ -1,16 +1,17 @@
 import connectBdd from "./connecteur"
 
-export default async function getProfiles(number) {
+export default async function getPosts(number) {
     const prisma = connectBdd()
-    return prisma.profile.findMany({
+    return prisma.post.findMany({
         select: {
-            bio: true,
+            title: true,
+            content: true,
         },
         orderBy: {
             id: 'asc'
         }
     })
-    .then((profiles) => profiles)
+    .then((posts) => posts)
     .catch(() => false)
     .finally(() => prisma.$disconnect())
 }

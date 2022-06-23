@@ -10,7 +10,7 @@ import BigCard from '../components/BigCard'
 
 import NavLinks from "../constantes/NavLinks"
 import FootLinks from "../constantes/FootLinks"
-import Books from "../constantes/Books"
+import BookStatik from "../constantes/BooksStatik"
 
 export default function Home() {
 
@@ -32,7 +32,7 @@ export default function Home() {
 
       <div className={`flex flex-rowbg-white text-white p-4 gap-4 overflow-x-scroll`}>
 
-        {Books().sort(function(a,b){return(b.note - a.note)}).slice(0,5).map((book)=>{return(
+        {BookStatik().sort(function(a,b){return(b.note - a.note)}).slice(0,5).map((book)=>{return(
           <BigCard key={book.sku} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
         )})}
 

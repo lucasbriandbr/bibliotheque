@@ -28,6 +28,7 @@ model User {
   role    Role     @default(READER)
   profile Profile?
   Post    Post[]
+  Book    Book[]
 }
 
 model Profile {
@@ -41,9 +42,26 @@ model Profile {
 model Post {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
+  createdAt DateTime @default(now())
   content   String?
-  published Boolean  @default(false)
+  published Boolean  @default(true)
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    Int
+  note      Int
+}
+
+model Book {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(255)
+  serie     Boolean
+  published Boolean  @default(true)
+  tome      Int
+  imgsrc    String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  avis      Post[]
+  isbn      String
+  sku       String
 }
