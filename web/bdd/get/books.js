@@ -1,17 +1,16 @@
-import connectBdd from "./connecteur"
+import connectBdd from "../connecteur"
 
-export default async function getPosts(number) {
+export default async function getBooks(number) {
     const prisma = connectBdd()
-    return prisma.post.findMany({
+    return prisma.book.findMany({
         select: {
             title: true,
-            content: true,
         },
         orderBy: {
             id: 'asc'
         }
     })
-    .then((posts) => posts)
+    .then((books) => books)
     .catch(() => false)
     .finally(() => prisma.$disconnect())
 }

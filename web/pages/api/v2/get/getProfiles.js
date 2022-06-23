@@ -1,4 +1,4 @@
-import getProfiles from "../../../../bdd/profiles"
+import getProfiles from "../../../../bdd/get/profiles"
 
 export default async (req, res) => {
     const {number} = req.query

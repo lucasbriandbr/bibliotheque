@@ -1,4 +1,4 @@
-import getPosts from "../../../../bdd/posts"
+import getPosts from "../../../../bdd/get/posts"
 
 export default async (req, res) => {
     const {number} = req.query

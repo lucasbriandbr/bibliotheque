@@ -1,4 +1,4 @@
-import connectBdd from "./connecteur"
+import connectBdd from "../connecteur"
 
 export default async function getUsers(number) {
     const prisma = connectBdd()

@@ -1,4 +1,4 @@
-import getBooks from "../../../../bdd/books"
+import getBooks from "../../../../bdd/get/books"
 
 export default async (req, res) => {
     const {number} = req.query
