@@ -10,7 +10,7 @@ import Footer from '../../components/Footer'
 
 import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
-import Books from '../../constantes/Books'
+import BooksStatik from '../../constantes/BooksStatik'
 
 export default function Explore() {
 

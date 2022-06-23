@@ -12,7 +12,7 @@ import Card from '../../components/Card'
 
 import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
-import BookStatik from '../../constantes/Books'
+import BooksStatik from '../../constantes/BooksStatik'
 
 export default function Search() {
 
@@ -25,10 +25,10 @@ export default function Search() {
     }
 
     function calcPage() {
-        if (BookStatik().length%elements>0) {
-            setPage(~~(BookStatik().length/elements)+1)
+        if (BooksStatik().length%elements>0) {
+            setPage(~~(BooksStatik().length/elements)+1)
         }else{
-            setPage(~~(BookStatik().length/elements))
+            setPage(~~(BooksStatik().length/elements))
         }
     }
 
@@ -60,7 +60,7 @@ export default function Search() {
 
                 <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
-                    {BookStatik().slice((state-1)*elements,state*elements).map((book)=>{return(
+                    {BooksStatik().slice((state-1)*elements,state*elements).map((book)=>{return(
                         <Card key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
                     )})}
 
