@@ -30,7 +30,7 @@ export const schema = makeExecutableSchema({
 });
 
 const app = express();
-app.use('/graphql', graphqlHTTP({
+app.use('/api/v2/get/getUsers', graphqlHTTP({
   schema,
 }));
 
