@@ -1,4 +1,4 @@
-import getUsers from "../../../../bdd/get/users"
+import getUsers from "../../../../bdd/get/getUsers"
 
 export default async (req, res) => {
     const {number} = req.query
