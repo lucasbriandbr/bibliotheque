@@ -26,11 +26,10 @@ export default function Connexion() {
     const [ mail2 , setMail2 ] = useState("")
     const [ psswd2 , setPsswd2 ] = useState("")
     const [ psswdConfirm , setPsswdConfirm ] = useState("")
+    const [ name , setName ] = useState("")
 
     const [ error1 , setError1 ] = useState()
     const [ error2 , setError2 ] = useState()
-
-    const router = useRouter()
 
     return(
         <>
@@ -62,10 +61,11 @@ export default function Connexion() {
                         <h3 className='block font-medium text-2xl mt-4'>Inscription</h3>
                         <p className={`text-xs w-full font-medium mt-4`}>On ne s&apos;est jamais vus, j&apos;aurai tenté. Mais on a hâte de te rencontrer !</p>
                         <input type="text" id='Email2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail2(document.getElementById('Email2').value)}}/>
+                        <input type="text" id='Name' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Name' required onChange={()=>{setName(document.getElementById('Name').value)}}/>
                         <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
                         <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
-                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{setError2(inscription(mail2, psswd2, psswdConfirm))}}>S&apos;enregistrer</button>
+                        <button type="button" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>{inscription(mail2,psswd2,psswdConfirm,name)}}>S&apos;enregistrer</button>
                         {error2}
 
                     </div>
