@@ -1,4 +1,4 @@
-import { prisma } from "../connecteur"
+import connectBdd from "../connecteur"
 
 export async function getUserInfos(email){
     const prisma = connectBdd()

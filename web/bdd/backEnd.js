@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 // const BACK_END_SERVER = process.env.NEXT_PUBLIC_API_URL
-const BACK_END_SERVER = `api`
+const BACK_END_SERVER = `api/v2`
 
 export function getRequest(ressource, params = {}){
     return axios.get(`${BACK_END_SERVER}/${ressource}`,
@@ -17,11 +17,14 @@ export function getRequest(ressource, params = {}){
 }
 
 export function postRequest(ressource, params = {}){
-
-    return axios.post(`${BACK_END_SERVER}/${ressource}`,
+    return axios.post(`${ressource}`,
     {
         ...params,
     })
-    .then(res => res?.data)
-    .catch(err => Promise.reject())
+    .then(function (response) {
+        console.log(response)
+    })
+    .catch(function (error) {
+        console.log(error)
+    })
 }

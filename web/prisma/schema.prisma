@@ -21,10 +21,10 @@ enum Role {
 model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
-  name    String?
+  name    String
   password String
-  resetToken String
-  resetTokenExpiry Float
+  resetToken String?
+  resetTokenExpiry Float?
   role    Role     @default(READER)
   profile Profile?
   Post    Post[]

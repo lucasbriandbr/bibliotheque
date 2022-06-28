@@ -1,13 +1,13 @@
 import connectBdd from "../connecteur"
-import { encrypt } from "../../fonctionsutiles/validateurs/encryptVerify"
+// import { encrypt } from "../../fonctionsutiles/validateurs/encryptVerify"
 
 export async function insertUser(email,password,name) {
     const prisma = connectBdd()
-    const passwordEncrypted = await encrypt(password)
+    // const passwordEncrypted = await encrypt(password)
     return prisma.user.create({
         data:{
             email: email,
-            password: passwordEncrypted,
+            password: password,
             name: name
         }
     })
