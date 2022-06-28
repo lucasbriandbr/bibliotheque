@@ -7,5 +7,5 @@ export function postRequest(ressource, params = {}){
     },
     {headers: {'Authorization': '' ?? ''}})
     .then(res => res?.data)
-    .catch(err => Promise.reject({global : 'Promise reject'}))
+    .catch(err => Promise.reject(console.error(err.response?.data?.error)))
 }

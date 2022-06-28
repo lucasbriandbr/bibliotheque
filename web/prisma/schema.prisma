@@ -19,40 +19,39 @@ enum Role {
 }
 
 model User {
-  id          Int        @unique @default(autoincrement())
+  id          Int        @unique @id @default(autoincrement())
   email       String     @unique
   name        String     @unique
   password    String
   role        Role       @default(READER)
   bio         String     @default("")
   created_at  DateTime   @default(now())
-  Post        Post[]
-  Book        Book[]
+  posts       Post[]
+  books       Book[]
 }
 
 model Post {
-  id          Int        @id @default(autoincrement())
-  title       String     @db.VarChar(255)
+  id          Int        @unique @id @default(autoincrement())
+  title       String
   createdAt   DateTime   @default(now())
-  content     String?
+  content     String
   published   Boolean    @default(true)
   author      User       @relation(fields: [authorId], references: [id])
   authorId    Int
-  book        Book        @relation(fields: [bookId], references: [id])
+  book        Book       @relation(fields: [bookId], references: [id])
   bookId      Int
   note        Int
 }
 
 model Book {
-  id          Int        @id @default(autoincrement())
-  title       String     @db.VarChar(255)
-  serie       Boolean
+  id          Int        @unique @id @default(autoincrement())
+  title       String
+  serie       Boolean    @default(false)
   published   Boolean    @default(true)
-  tome        Int
-  imgsrc      String
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    Int
+  tome        Int        @default(1)
+  imgsrc      String     @unique
+  authors     User[]
   avis        Post[]
-  isbn        String
-  sku         String
+  isbn        String     @unique
+  sku         String     @unique
 }
