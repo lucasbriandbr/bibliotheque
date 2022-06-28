@@ -17,14 +17,8 @@ export function getRequest(ressource, params = {}){
 }
 
 export function postRequest(ressource, params = {}){
-    return axios.post(`${ressource}`,
-    {
-        ...params,
-    })
-    .then(function (response) {
-        console.log(response)
-    })
-    .catch(function (error) {
-        console.log(error)
-    })
+    return axios
+                .post(`${ressource}`,{...params,})
+                .then(function (response) {console.log(response)})
+                .catch(function (error) {console.log(error)})
 }
