@@ -12,5 +12,5 @@ import { postRequest } from "../../bdd/backEnd"
 // }
 
 export function register(email,password,name){
-    return postRequest('http://localhost:3000/api/v2/post/addUser', {email,password,name})
+    return postRequest('api/v2/post/addUser', {email,password,name})
 }
