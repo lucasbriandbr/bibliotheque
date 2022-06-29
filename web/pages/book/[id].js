@@ -12,8 +12,7 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function Explore() {
-
+export default function booksId() {
     return(
         <>
         <Head>
