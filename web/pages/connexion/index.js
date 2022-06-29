@@ -40,7 +40,6 @@ export default function Connexion() {
     
     useEffect(() => {
         if(error2!=undefined&&error2.length===0){
-            console.log('etape - 2')
             register(mail2.toLowerCase(),psswd2,name)
                 .then(res => {
                     if(res.retour=='ok'){setIsUserConnected(true)}else{setError2(getError(res.toString())),console.log(res)}
@@ -104,9 +103,6 @@ export default function Connexion() {
         }
     }
 
-    function handleRegister() {
-        setError2(inscriptionErrors(mail2,psswd2,psswdConfirm))
-        console.log('etape - 1')
-    }
+    function handleRegister(){setError2(inscriptionErrors(mail2,psswd2,psswdConfirm))}
 
 }
