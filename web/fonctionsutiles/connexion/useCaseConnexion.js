@@ -12,5 +12,5 @@ import { postRequest } from "../../bdd/backEnd"
 // }
 
 export function register(email,password,name){
-    return postRequest('https://bibliotheque-umber.vercel.app/api/v2/post/addUser', {email,password,name})
+    return postRequest('/api/v2/post/addUser', {email,password,name})
 }

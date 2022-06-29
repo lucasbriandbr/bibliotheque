@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
+import Loader from '../../components/Loader'
 
 //  Import des constantes
 
@@ -32,6 +33,9 @@ export default function Connexion() {
 
     const [ error1 , setError1 ] = useState()
     const [ error2 , setError2 ] = useState()
+    
+    const [ loader1 , setLoader1 ] = useState(false)
+    const [ loader2 , setLoader2 ] = useState(false)
 
     const router = useRouter()
     const [ isUserConnected , setIsUserConnected ] = useState(false)
@@ -40,9 +44,10 @@ export default function Connexion() {
     
     useEffect(() => {
         if(error2!=undefined&&error2.length===0){
+            setLoader2(true)
             register(mail2.toLowerCase(),psswd2,name)
                 .then(res => {
-                    if(res.retour=='ok'){setIsUserConnected(true)}else{setError2(getError(res.toString())),console.log(res)}
+                    if(res.retour=='ok'){setIsUserConnected(true)}else{setLoader2(false),setError2(getError(res.toString())),console.log(res)}
                 })
                 .catch(err => {})
         }
@@ -82,7 +87,7 @@ export default function Connexion() {
                         <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
                         <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
                         <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
-                        <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>handleRegister()}>S&apos;enregistrer</button>
+                        <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>handleRegister()}>{loader2?<Loader/>:"S'enregistrer"}</button>
                         {error2}
 
                     </div>
