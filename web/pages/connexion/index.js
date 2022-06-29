@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 //  Import des objets
@@ -17,6 +17,7 @@ import FootLinks from "../../constantes/FootLinks"
 import inscriptionErrors from '../../fonctionsutiles/connexion/inscription'
 import connexionErrors from '../../fonctionsutiles/connexion/connexion'
 import { register } from '../../fonctionsutiles/connexion/useCaseConnexion'
+import getError from '../../constantes/Errors'
 
 export default function Connexion() {
 
@@ -31,6 +32,22 @@ export default function Connexion() {
 
     const [ error1 , setError1 ] = useState()
     const [ error2 , setError2 ] = useState()
+
+    const router = useRouter()
+    const [ isUserConnected , setIsUserConnected ] = useState(false)
+
+    useEffect(() => {if(isUserConnected){router.push('/')}},[isUserConnected])
+    
+    useEffect(() => {
+        if(error2!=undefined&&error2.length===0){
+            console.log('etape - 2')
+            register(mail2.toLowerCase(),psswd2,name)
+                .then(res => {
+                    if(res.retour=='ok'){setIsUserConnected(true)}else{setError2(getError(res.toString())),console.log(res)}
+                })
+                .catch(err => {})
+        }
+    },[error2])
 
     return(
         <>
@@ -52,25 +69,21 @@ export default function Connexion() {
 
                     <div className={`h-full md:w-1/2 lg:w-1/2 items-center justify-center`}>                        
 
-                        <form onSubmit={handleConnect}>
-                            <h3 className='block font-medium text-2xl mt-4'>Connexion</h3>
-                            <p className={`text-xs w-full font-medium mt-4`}>Dis, tu traines souvent dans le coin ? Il me semble t&apos;avoir déjà vu passer dans le coin...</p>
-                            <input type="text" id='Email1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail1(document.getElementById('Email1').value)}}/>
-                            <input type="password" id='Psswd1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd1(document.getElementById('Psswd1').value)}}/>
-                            <button type="submit" className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100">Se connecter</button>
-                        </form>
+                        <h3 className='block font-medium text-2xl mt-4'>Connexion</h3>
+                        <p className={`text-xs w-full font-medium mt-4`}>Dis, tu traines souvent dans le coin ? Il me semble t&apos;avoir déjà vu passer dans le coin...</p>
+                        <input type="text" id='Email1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail1(document.getElementById('Email1').value)}}/>
+                        <input type="password" id='Psswd1' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd1(document.getElementById('Psswd1').value)}}/>
+                        <button className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 mt-4 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>handleConnect()}>Se connecter</button>
                         {error1}
 
-                        <form onSubmit={handleRegister}>
-                            <h3 className='block font-medium text-2xl mt-4'>Inscription</h3>
-                            <p className={`text-xs w-full font-medium mt-4`}>On ne s&apos;est jamais vus, j&apos;aurai tenté. Mais on a hâte de te rencontrer !</p>
-                            <input type="text" id='Email2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail2(document.getElementById('Email2').value)}}/>
-                            <input type="text" id='Name' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Name' required onChange={()=>{setName(document.getElementById('Name').value)}}/>
-                            <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
-                            <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
-                            <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
-                            <button type="submit" className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">S&apos;enregistrer</button>
-                        </form>
+                        <h3 className='block font-medium text-2xl mt-4'>Inscription</h3>
+                        <p className={`text-xs w-full font-medium mt-4`}>On ne s&apos;est jamais vus, j&apos;aurai tenté. Mais on a hâte de te rencontrer !</p>
+                        <input type="text" id='Email2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Mail' required onChange={()=>{setMail2(document.getElementById('Email2').value)}}/>
+                        <input type="text" id='Name' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Name' required onChange={()=>{setName(document.getElementById('Name').value)}}/>
+                        <input type="password" id='Psswd2' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Password' required onChange={()=>{setPsswd2(document.getElementById('Psswd2').value)}}/>
+                        <input type="password" id='PsswdConfirm' className="block w-full text-gray-900 rounded-lg border-[1px] border-black text-sm px-5 py-2.5 mt-4 focus:outline-none" placeholder='Confirm password' required onChange={()=>{setPsswdConfirm(document.getElementById('PsswdConfirm').value)}}/>
+                        <p className={`text-xs w-full font-medium mt-4`}>Votre mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial.</p>
+                        <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100" onClick={()=>handleRegister()}>S&apos;enregistrer</button>
                         {error2}
 
                     </div>
@@ -84,20 +97,16 @@ export default function Connexion() {
         </>
     )
 
-    function handleConnect(event) {
-        event.preventDefault()
+    function handleConnect() {
         setError1(connexionErrors(mail1.toLowerCase(), psswd1))
         if(error1!=undefined&&error1.length===0){
 
         }
     }
 
-    function handleRegister(event) {
-        event.preventDefault()
+    function handleRegister() {
         setError2(inscriptionErrors(mail2,psswd2,psswdConfirm))
-        if(error2!=undefined&&error2.length===0){
-            register(mail2.toLowerCase(),psswd2,name)
-        }
+        console.log('etape - 1')
     }
 
 }
