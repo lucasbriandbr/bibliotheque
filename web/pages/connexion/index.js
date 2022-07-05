@@ -40,7 +40,7 @@ export default function Connexion() {
     const router = useRouter()
     const [ isUserConnected , setIsUserConnected ] = useState(false)
 
-    useEffect(() => {if(isUserConnected){router.push('/')}},[isUserConnected])
+    useEffect(() => {if(isUserConnected){router.push(`/`)}},[isUserConnected])
     
     useEffect(() => {
         if(error2!=undefined&&error2.length===0){

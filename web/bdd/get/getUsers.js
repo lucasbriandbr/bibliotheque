@@ -1,11 +1,11 @@
 import connectBdd from "../connecteur"
 
-export async function getUserInfos(email){
+export async function getUserInfos(name){
     const prisma = connectBdd()
     const user = await prisma.user.findFirst({
         where: {
-            email : {
-                equals: email,
+            name : {
+                equals: name,
                 mode: 'insensitive'
             }
         }

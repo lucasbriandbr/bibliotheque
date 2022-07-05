@@ -7,6 +7,7 @@ import Link from 'next/link'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
+import BigCard from '../../components/BigCard'
 
 //  Import des constantes
 
@@ -61,7 +62,7 @@ export default function Search() {
                 <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
                     {BooksStatik().slice((state-1)*elements,state*elements).map((book)=>{return(
-                        <Card key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
+                        <BigCard key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
                     )})}
 
                 </div>

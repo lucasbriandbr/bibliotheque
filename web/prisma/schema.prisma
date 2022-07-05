@@ -24,10 +24,11 @@ model User {
   name        String     @unique
   password    String
   role        Role       @default(READER)
-  // langue      Lang
   bio         String     @default("")
   created_at  DateTime   @default(now())
   lastCnnct   DateTime
+  private     Boolean    @default(false)
+  challenge   String[]
   posts       Post[]
   books       Book[]
 }

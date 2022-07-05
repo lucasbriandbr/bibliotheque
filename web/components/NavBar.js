@@ -17,8 +17,8 @@ export default function NavBar({elements}) {
 
     return(
         <>
-            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[47px]":""} fixed top-0 w-full z-10`}>
-                <div className={`relative bg-[#faebd7] border-b-[1px] border-black`}>
+            <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[48px]":""} fixed top-0 w-full z-10`}>
+                <div className={`relative bg-[#faebd7]`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
                         <Link href={"/"}>
                             <a className={`flex ml-6 items-center ${styles.title}`}>
@@ -31,7 +31,7 @@ export default function NavBar({elements}) {
                                 {elements.map((element) => {return(
                                     <li key={element.title}>
                                         <Link href={element.link}>
-                                            <a className={`flex text-black uppercase transition-colors duration-200 ease-in-out hover:bg-[#F9F3EE] text-xs`}>{element.title}</a>
+                                            <a className={`flex text-black uppercase transition-colors duration-200 ease-in-out hover:bg-[#F9F3EE] text-xs`}><img className="h-5 w-5" src={element.path}/></a>
                                         </Link>
                                     </li>
                                 )})}
