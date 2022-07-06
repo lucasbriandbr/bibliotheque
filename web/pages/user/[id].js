@@ -17,7 +17,7 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function booksId({idUser,biographie,role}){
+export default function BooksId({idUser,biographie,role}){
 
     let userName = idUser
     // .replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
@@ -48,8 +48,8 @@ export default function booksId({idUser,biographie,role}){
 
                         <p className='text-sm mb-4'>{userName} has read 4 books of their goal of 10!</p>
 
-                        <div class="w-full bg-gray-600 rounded-full h-1.5 dark:bg-gray-300 mb-4">
-                            <div class="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: 40+'%' }}></div>
+                        <div className="w-full bg-gray-600 rounded-full h-1.5 dark:bg-gray-300 mb-4">
+                            <div className="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: 40+'%' }}></div>
                         </div>
 
                         <p className='text-sm text-gray-400'>100%</p>
@@ -182,7 +182,7 @@ export default function booksId({idUser,biographie,role}){
 
                     <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
-                        <p className='font-semibold'>{userName}'s Friends</p>
+                        <p className='font-semibold'>{userName}&apos;s Friends</p>
 
                         <UserProfile/>
 
