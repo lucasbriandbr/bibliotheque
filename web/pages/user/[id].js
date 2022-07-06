@@ -240,7 +240,7 @@ export async function getServerSideProps(context){
         }
     }else{
         if(id===id.toLowerCase()){
-            return {
+            return{
                 props:{
                     idUser:id,
                 }

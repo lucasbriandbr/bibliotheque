@@ -14,7 +14,3 @@ import { getRequest, postRequest } from "../../bdd/backEnd"
 export function register(email,password,name){
     return postRequest('/api/v2/post/addUser', {email,password,name})
 }
-
-export function getData(name){
-    return getRequest('/api/v2/get/getUser', {name})
-}
