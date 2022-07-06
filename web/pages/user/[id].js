@@ -44,7 +44,7 @@ export default function booksId({idUser,biographie,role}){
 
                     <div className='flex flex-col rounded-lg border-[1px] border-gray-300 p-4'>
 
-                        <p className='font-semibold mb-4'>{userName}'s {current.getFullYear().toString()} Book Challenge</p>
+                        <p className='font-semibold mb-4'>{userName}&apos; {current.getFullYear().toString()} Book Challenge</p>
 
                         <p className='text-sm mb-4'>{userName} has read 4 books of their goal of 10!</p>
 
@@ -58,7 +58,7 @@ export default function booksId({idUser,biographie,role}){
 
                     <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
-                        <p className='font-semibold'>{userName}'s Library</p>
+                        <p className='font-semibold'>{userName}&apos;s Library</p>
 
                         {BooksStatik().slice(0,3).map((book)=>{return(
                             <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
@@ -70,7 +70,7 @@ export default function booksId({idUser,biographie,role}){
 
                     <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
-                        <p className='font-semibold'>{userName}'s Favorite Books</p>
+                        <p className='font-semibold'>{userName}&apos;s Favorite Books</p>
 
                         {BooksStatik().slice(0,3).map((book)=>{return(
                             <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
