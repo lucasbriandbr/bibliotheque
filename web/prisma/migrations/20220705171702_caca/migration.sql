@@ -10,6 +10,9 @@ CREATE TABLE "User" (
     "role" "Role" NOT NULL DEFAULT E'READER',
     "bio" TEXT NOT NULL DEFAULT E'',
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "lastCnnct" TIMESTAMP(3),
+    "private" BOOLEAN NOT NULL DEFAULT false,
+    "challenge" TEXT[],
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -19,7 +22,7 @@ CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "content" TEXT NOT NULL,
+    "content" TEXT,
     "published" BOOLEAN NOT NULL DEFAULT true,
     "authorId" INTEGER NOT NULL,
     "bookId" INTEGER NOT NULL,
@@ -36,7 +39,8 @@ CREATE TABLE "Book" (
     "published" BOOLEAN NOT NULL DEFAULT true,
     "tome" INTEGER NOT NULL DEFAULT 1,
     "imgsrc" TEXT NOT NULL,
-    "isbn" TEXT NOT NULL,
+    "isbn10" TEXT NOT NULL,
+    "isbn13" TEXT NOT NULL,
     "sku" TEXT NOT NULL,
 
     CONSTRAINT "Book_pkey" PRIMARY KEY ("id")
@@ -67,7 +71,10 @@ CREATE UNIQUE INDEX "Book_id_key" ON "Book"("id");
 CREATE UNIQUE INDEX "Book_imgsrc_key" ON "Book"("imgsrc");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Book_isbn_key" ON "Book"("isbn");
+CREATE UNIQUE INDEX "Book_isbn10_key" ON "Book"("isbn10");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Book_isbn13_key" ON "Book"("isbn13");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Book_sku_key" ON "Book"("sku");

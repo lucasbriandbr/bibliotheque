@@ -9,3 +9,13 @@ export function postRequest(ressource, params = {}){
     .then(res => res?.data)
     .catch(err => err.response?.data?.error)
 }
+
+export function getRequest(ressource, params = {}){
+    return axios.get(`${ressource}`,
+            {
+                headers: {'Authorization': '' ?? ''},
+                params: {...params}
+            })
+    .then(res => {return res?.data})
+    .catch(err => err.response?.data?.error)
+}

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { getUserInfos } from '../../bdd/get/getUsers'
 
 //  Import des objets
 
@@ -16,9 +17,10 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function booksId({idUser}){
+export default function booksId({idUser,biographie,role}){
 
-    let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
+    let userName = idUser
+    // .replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
     let current = new Date()
 
     const [ loader1, setLoader1 ] = useState(false)
@@ -28,10 +30,10 @@ export default function booksId({idUser}){
 
     return(
         <>
-        <Head>
-            <title>{idUser} - Alexandria</title>
-            <meta name="description" content="Written with Heart" />
-            <link rel="icon" href="/favicon.ico" />
+            <Head>
+                <title>{idUser} - Alexandria</title>
+                <meta name="description" content="Written with Heart" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
     
             <NavBar elements={NavLinks()}/>
