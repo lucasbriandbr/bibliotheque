@@ -14,3 +14,10 @@ import { getRequest, postRequest } from "../../bdd/backEnd"
 export function register(email,password,name){
     return postRequest('/api/v2/post/addUser', {email,password,name})
 }
+
+export function getUserInfos(name) {
+    return getRequest('/api/v2/get/user/getInfos', {name})
+    .then(({infos,ventes,achats}) => {
+        return {infos, achats:ventes, ventes:achats}
+    })
+}

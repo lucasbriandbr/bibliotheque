@@ -12,10 +12,10 @@ export function postRequest(ressource, params = {}){
 
 export function getRequest(ressource, params = {}){
     return axios.get(`${ressource}`,
-            {
-                headers: {'Authorization': '' ?? ''},
-                params: {...params}
-            })
-    .then(res => {return res?.data})
+    {
+        ...params,
+    },
+    {headers: {'Authorization': '' ?? ''}})
+    .then(res => res?.data)
     .catch(err => err.response?.data?.error)
 }

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { getUserInfos } from '../../bdd/get/getUsers'
+import { getUserInfos } from '../../fonctionsutiles/connexion/useCaseConnexion'
 
 //  Import des objets
 
@@ -17,16 +17,17 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function BooksId({idUser,biographie,role}){
+export default function BooksId({idUser,biography}){
 
-    let userName = idUser
-    // .replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
+    let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
     let current = new Date()
 
     const [ loader1, setLoader1 ] = useState(false)
     const [ loader2, setLoader2 ] = useState(false)
     const [ loader3, setLoader3 ] = useState(false)
     const [ loader4, setLoader4 ] = useState(false)
+
+    console.log('bio:'+biography)
 
     return(
         <>
@@ -240,11 +241,29 @@ export async function getServerSideProps(context){
         }
     }else{
         if(id===id.toLowerCase()){
-            return{
-                props:{
-                    idUser:id,
+            return await getUserInfos('lucasaurus')
+            .then(({bio}) => {
+                return {
+                    props: {
+                        biography: bio,
+                        idUser: id,
+                    }
                 }
-            }
+            })
+            .catch((error) => {
+                console.log(error)
+                return {
+                    props: {
+                        idUser: id,
+                        // erreur: error,
+                    }
+                }
+            })
+            // {
+            //     props:{
+            //         idUser:id,
+            //     }
+            // }
         }else{
             return {
                 redirect: {

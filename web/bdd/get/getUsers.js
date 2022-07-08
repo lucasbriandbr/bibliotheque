@@ -1,20 +1,5 @@
 import connectBdd from "../connecteur"
 
-export async function getUserInfos(name){
-    const prisma = connectBdd()
-    const user = await prisma.user.findFirst({
-        where: {
-            name : {
-                equals: name,
-                mode: 'insensitive'
-            }
-        }
-    })
-    prisma.$disconnect()
-
-    return user ?? false
-}
-
 export function updateUserInfos(id,password) {
     const prisma = connectBdd()
     return prisma.user.update({
