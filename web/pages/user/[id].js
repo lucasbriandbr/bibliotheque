@@ -41,9 +41,9 @@ export default function BooksId({idUser,biography}){
         
                 <NavBar elements={NavLinks()}/>
                 
-                <div className='w-full flex flex-row p-4 gap-4'>
+                <div className='w-full flex lg:flex-row flex-col p-4 gap-4'>
 
-                    <div className='flex flex-col flex-1 order-1 gap-4'>
+                    <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
 
                         <div className='flex flex-col rounded-lg border-[1px] border-gray-300 p-4'>
 
@@ -85,7 +85,7 @@ export default function BooksId({idUser,biography}){
 
                     </div>
 
-                    <div className='flex flex-[3] order-2 flex-col rounded-lg border-[1px] border-gray-300 relative'>
+                    <div className='flex flex-[3] lg:order-2 order-1 flex-col rounded-lg border-[1px] border-gray-300 relative'>
 
                         <div className='h-[25vh] flex w-full rounded-lg bg-gradient-to-b from-indigo-500 to-[rgb(99,102,241,0.1)]'></div>
 
@@ -105,7 +105,7 @@ export default function BooksId({idUser,biography}){
 
                             <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader3?<Loader/>:"Compare Books"}</button>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button>
+                            {/* <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button> */}
 
                         </div>
 
