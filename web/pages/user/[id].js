@@ -101,7 +101,7 @@ export default function BooksId({idUser,biography}){
 
                             <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader1?<Loader/>:"Add to Friends"}</button>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button>
+                            {/* <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button> */}
 
                             <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader3?<Loader/>:"Compare Books"}</button>
 
@@ -181,7 +181,7 @@ export default function BooksId({idUser,biography}){
 
                     </div>
 
-                    <div className='flex flex-col flex-1 order-3 gap-4'>
+                    <div className='flex flex-col flex-1 order-3 lg:flex hidden gap-4'>
 
                         <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
@@ -228,14 +228,14 @@ export default function BooksId({idUser,biography}){
         :
         <>
             <Head>
-                <title>{idUser} - Alexandria</title>
+                <title>Error : {idUser} does not exist - Alexandria</title>
                 <meta name="description" content="Written with Heart" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <NavBar elements={NavLinks()}/>
 
-            <p>Ca marche pas beau gosse</p>
+            <p className='p-4'>L'utilisateur {idUser} n'existe pas ou plus. Veuillez vérifier l'orthographe, puis réessayer.</p>
 
             <Footer elements={FootLinks()}/>
         </>

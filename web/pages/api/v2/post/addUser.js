@@ -1,7 +1,8 @@
 import insertUser from '../../../../bdd/post/addUser.js'
 
 export default (req, res) => {
-    const {email,password,name} = req.body
+    const {email,password,name} = req.body.params
+    console.log(email,password,name)
     return insertUser(email,password,name)
     .then(() => {
         return res.status(200).json({retour:'ok'})

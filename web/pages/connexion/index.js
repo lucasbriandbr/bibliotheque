@@ -55,10 +55,10 @@ export default function Connexion() {
 
     return(
         <>
-        <Head>
-            <title>Connexion - Alexandria</title>
-            <meta name="description" content="Written with Heart" />
-            <link rel="icon" href="/favicon.ico" />
+            <Head>
+                <title>Connexion - Alexandria</title>
+                <meta name="description" content="Written with Heart" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
     
             <NavBar elements={NavLinks()}/>

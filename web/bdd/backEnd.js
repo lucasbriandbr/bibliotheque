@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 export function postRequest(ressource, params = {}){
-    return axios.post(`${process.env.API_URL}${ressource}`,
+return axios.post(`${ressource}`,/*${process.env.API_URL}*/
     {params},
     {headers: {'Authorization': '' ?? ''}})
     .then(res => res?.data)
@@ -9,7 +9,7 @@ export function postRequest(ressource, params = {}){
 }
 
 export function getRequest(ressource, params = {}){
-    return axios.get(`${process.env.API_URL}${ressource}`,
+    return axios.get(`${ressource}`,/*${process.env.API_URL}*/
     {params},
     {headers: {'Authorization': '' ?? ''}})
     .then(res => res?.data)
