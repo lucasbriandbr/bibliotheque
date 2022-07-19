@@ -12,9 +12,6 @@ model User {
 
   id         Int         @id @unique @default(autoincrement())
 
-  //profil qui apparaitra avec les informations
-  profile    Profile?
-
   //informations de connexion
   email      String      @unique
   name       String      @unique
@@ -39,16 +36,6 @@ model User {
   //amis que l'utilisateur peut avoir
   friends    User[]      @relation("UserFriendsUser")
   friendof   User[]      @relation("UserFriendsUser")
-
-}
-
-model Profile {
-
-  id         Int         @id @unique @default(autoincrement())
-
-  //utilisateur auquel se refere le profil
-  userId     Int         @unique
-  user       User        @relation(fields: [userId], references: [id])
 
   //biograhie
   bio        String?

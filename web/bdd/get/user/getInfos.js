@@ -10,6 +10,7 @@ export async function getInfos(name){
             }
         },
         select: {
+            name: true,
             bio: true,
         },
         orderBy: {

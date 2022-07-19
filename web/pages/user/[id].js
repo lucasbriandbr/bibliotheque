@@ -17,7 +17,7 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function BooksId({idUser,biography}){
+export default function BooksId({idUser,biography,exists}){
 
     let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
     let current = new Date()
@@ -27,11 +27,9 @@ export default function BooksId({idUser,biography}){
     const [ loader3, setLoader3 ] = useState(false)
     const [ loader4, setLoader4 ] = useState(false)
 
-    console.log(biography)
-
     return(
         <>
-        {biography===false?
+        {exists!==false?
             <>
                 <Head>
                     <title>{idUser} - Alexandria</title>
@@ -263,6 +261,7 @@ export async function getServerSideProps(context){
                 return {
                     props: {
                         biography: userInfos?.bio||false,
+                        exists: userInfos?.name||false,
                         idUser: id,
                     }
                 }
