@@ -1,61 +1,190 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-enum Role {
-  READER
-  AUTHOR
-  EDITOR
-  ADMIN
+model User {
+
+  id         Int         @id @unique @default(autoincrement())
+
+  //profil qui apparaitra avec les informations
+  profile    Profile?
+
+  //informations de connexion
+  email      String      @unique
+  name       String      @unique
+  password   String      
+
+  //role de l'utilisateur
+  role       Role        @default(READER)
+
+  //date de creation et derniere connexion
+  created_at DateTime    @default(now())
+  lastCnnct  DateTime    @default(now())
+
+  //notes et avis attribués
+  posts      Post[]      
+
+  //liste des livres et de leur état
+  lib        Statebook[]
+
+  //livres que l'utilisateur peut avoir écrit
+  written    Book[]
+
+  //amis que l'utilisateur peut avoir
+  friends    User[]      @relation("UserFriendsUser")
+  friendof   User[]      @relation("UserFriendsUser")
+
 }
 
-model User {
-  id          Int        @unique @id @default(autoincrement())
-  email       String     @unique
-  name        String     @unique
-  password    String
-  role        Role       @default(READER)
-  bio         String     @default("")
-  created_at  DateTime   @default(now())
-  lastCnnct   DateTime   @default(now())
-  private     Boolean    @default(false)
-  challenge   String[]
-  posts       Post[]
-  books       Book[]
+model Profile {
+
+  id         Int         @id @unique @default(autoincrement())
+
+  //utilisateur auquel se refere le profil
+  userId     Int         @unique
+  user       User        @relation(fields: [userId], references: [id])
+
+  //biograhie
+  bio        String?
+
+  //age
+  age        Int?
+
+  //statut du compte         
+  private    Boolean     @default(false)
+
+  //langue du compte
+  language   Lang        @default(EN)
+
+  //lien d'un eventuel site web
+  website    String?    
+
 }
 
 model Post {
-  id          Int        @unique @id @default(autoincrement())
-  title       String
-  createdAt   DateTime   @default(now())
-  content     String?
-  published   Boolean    @default(true)
-  author      User       @relation(fields: [authorId], references: [id])
+
+  id        Int          @id @unique @default(autoincrement())
+
+  //titre du post
+  title     String?
+
+  //date de creation du post
+  createdAt DateTime     @default(now())
+
+  //contenu du post
+  content   String?
+
+  //post publié ou pas
+  published Boolean      @default(true)
+
+  //livre auquel il se réfère
+  bookId    Int
+  book      Book         @relation(fields: [bookId], references: [id])
+
+  //note attribuée à ce livre
+  note      Int
+
+  //auteur du post
   authorId    Int
-  book        Book       @relation(fields: [bookId], references: [id])
-  bookId      Int
-  note        Int
+  author      User         @relation(fields: [authorId], references: [id])
+
 }
 
 model Book {
-  id          Int        @unique @id @default(autoincrement())
-  title       String
-  serie       Boolean    @default(false)
-  published   Boolean    @default(true)
-  tome        Int        @default(1)
-  imgsrc      String     @unique
-  authors     User[]
-  avis        Post[]
-  isbn10      String     @unique
-  isbn13      String     @unique
-  sku         String     @unique
+
+  id        Int     @id @unique @default(autoincrement())
+
+  //titre du livre
+  title     String
+
+  //est-ce une série ou pas
+  serie     Boolean @default(false)
+
+  //ce livre est-il actif ou pas ?
+  published Boolean @default(true)
+
+  //Quel est le tome s'il s'agit d'une série ?
+  tome      Int     @default(1)
+
+  //Source de l'image
+  imgsrc    String  @unique
+
+  //isbn 10 et 13 du livre
+  isbn10    String  @unique
+  isbn13    String  @unique
+
+  //sku (reference) du produit
+  sku       String  @unique
+
+  //quels sont les avis sur ce livre
+  avis      Post[]
+
+  //quels sont les auteurs de ce livre
+  authors   User[]
+
+  //Quel est l'état de ce livre pour les lecteurs ?
+  state     Statebook[]
+
+}
+
+model Statebook {
+
+  id        Int     @id @unique @default(autoincrement())
+
+  //utilisateur auquel il se réfère
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+
+  //état du livre (lu, en cours, veut lire)
+  state     State
+
+  //livre auquel il se réfère
+  bookId    Int
+  book      Book    @relation(fields: [bookId], references: [id])
+
+}
+
+enum Role {
+
+  //simple lecteur
+  READER
+
+  //auteur de livre
+  AUTHOR
+
+  //éditeur de livre
+  EDITOR
+
+  //administrateur du site
+  ADMIN
+
+}
+
+enum Lang {
+
+  //ENglish
+  EN
+
+  //FRançais
+  FR
+
+}
+
+enum State {
+
+  //Marque comme "je veux le lire"
+  WANNAREAD
+
+  //marqué comme "en train d'être lu"
+  CURRENTLYREADING
+
+  //marqué comme "lu"
+  READ
+  
 }

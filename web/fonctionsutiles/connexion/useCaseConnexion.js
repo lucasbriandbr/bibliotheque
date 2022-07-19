@@ -17,7 +17,7 @@ export function register(email,password,name){
 
 export function getUserInfos(name) {
     return getRequest('/api/v2/get/user/getInfos', {name})
-    .then(({infos,ventes,achats}) => {
-        return {infos, achats:ventes, ventes:achats}
+    .then((userInfos) => {
+        return userInfos
     })
 }
