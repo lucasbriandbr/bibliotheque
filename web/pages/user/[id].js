@@ -235,7 +235,7 @@ export default function BooksId({idUser,biography}){
 
             <NavBar elements={NavLinks()}/>
 
-            <p className='p-4'>L&apos;utilisateur {idUser} n'existe pas ou plus. Veuillez vérifier l&apos;orthographe, puis réessayer.</p>
+            <p className='p-4'>L&apos;utilisateur {idUser} n&apos;existe pas ou plus. Veuillez vérifier l&apos;orthographe, puis réessayer.</p>
 
             <Footer elements={FootLinks()}/>
         </>
