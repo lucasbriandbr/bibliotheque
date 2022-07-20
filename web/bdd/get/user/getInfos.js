@@ -12,6 +12,11 @@ export async function getInfos(name){
         select: {
             name: true,
             bio: true,
+            website: true,
+            age: true,
+            language: true,
+            created_at: true,
+            posts: true,
         },
         orderBy: {
             id: 'asc',

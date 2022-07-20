@@ -17,10 +17,15 @@ import NavLinks from "../../constantes/NavLinks"
 import FootLinks from "../../constantes/FootLinks"
 import BooksStatik from '../../constantes/BooksStatik'
 
-export default function BooksId({idUser,biography,exists}){
+//  Import des fonctions
+
+import hangLanguage from '../../fonctionsutiles/validateurs/hangLanguage'
+import hangMonthFromIndex from '../../fonctionsutiles/validateurs/hangMonthFromIndex'
+
+export default function BooksId({idUser,biography,website,language,age,creation,avis,exists}){
 
     let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
-    let current = new Date()
+    let createdat = new Date(creation)
 
     const [ loader1, setLoader1 ] = useState(false)
     const [ loader2, setLoader2 ] = useState(false)
@@ -41,7 +46,7 @@ export default function BooksId({idUser,biography,exists}){
                 
                 <div className='w-full flex lg:flex-row flex-col p-4 gap-4'>
 
-                    <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
+                    {/* <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
 
                         <div className='flex flex-col rounded-lg border-[1px] border-gray-300 p-4'>
 
@@ -81,7 +86,7 @@ export default function BooksId({idUser,biography,exists}){
 
                         </div>
 
-                    </div>
+                    </div> */}
 
                     <div className='flex flex-[3] lg:order-2 order-1 flex-col rounded-lg border-[1px] border-gray-300 relative'>
 
@@ -95,81 +100,105 @@ export default function BooksId({idUser,biography,exists}){
 
                         </div>
 
-                        <div className='p-4 flex flex-row w-full items-center justify-center gap-4'>
+                        {/* <div className='p-4 flex flex-row w-full items-center justify-center gap-4'>
 
                             <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader1?<Loader/>:"Add to Friends"}</button>
 
-                            {/* <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button> */}
+                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button>
 
                             <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader3?<Loader/>:"Compare Books"}</button>
 
-                            {/* <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button> */}
+                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button>
 
-                        </div>
+                        </div> */}
 
                         <div className='grid grid-cols-2 gap-4 p-4'>
                             
                             <div>
+                                
+                                {avis!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Notes : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'>{avis.length} ratings {avis.length>0?"(4,04 average)":''}<br/>{avis.length>0?"11 reviews":''}</p></div>
 
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>Notes : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'>26 Ratings (4,04 average)<br/>11 Reviews</p></div>
+                                    </div>
+                                :
+                                ''
+                                }
+                                
+                                {language!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                </div>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Language : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'>{hangLanguage(language)}</p></div>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                    </div>
+                                :
+                                ''
+                                }
+                                
+                                {age!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>Language : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'>French</p></div>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Details : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'>{age} years old</p></div>
 
-                                </div>
+                                    </div>
+                                :
+                                ''
+                                }
+                                
+                                {website!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Website : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'><a href={website} className='underline'>{website}</a></p></div>
 
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>Details : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'>Age 19, Male</p></div>
-
-                                </div>
-
-                                <div className='flex flex-row mb-2 gap-1'>
-
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>Website : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'><a href='https://www.safecop.fr/' className='underline'>https://www.safecop.fr/</a></p></div>
-
-                                </div>
+                                    </div>
+                                :
+                                ''
+                                }
 
                             </div>
 
                             <div>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                {/* <div className='flex flex-row mb-2 gap-1'>
 
                                     <div className='flex flex-[2]'><p className='font-semibold text-sm'>Favorite Books : </p></div>
                                     
                                     <div className='flex flex-[4]'><p className='text-sm'>Romance, Heroic Fantaisy</p></div>
 
-                                </div>
+                                </div> */}
+                                
+                                {creation!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Activity : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'>Joined in {hangMonthFromIndex(createdat.getMonth())} {createdat.getFullYear()}</p></div>
 
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>Activity : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'>Joined in September 2020</p></div>
+                                    </div>
+                                :
+                                ''
+                                }
 
-                                </div>
+                                {biography!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
 
-                                <div className='flex flex-row mb-2 gap-1'>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>About me : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'>{biography}</p></div>
 
-                                    <div className='flex flex-[2]'><p className='font-semibold text-sm'>About me : </p></div>
-                                    
-                                    <div className='flex flex-[4]'><p className='text-sm'>{biography}</p></div>
-
-                                </div>
+                                    </div>
+                                    :
+                                    ''
+                                }
 
                             </div>
 
@@ -179,7 +208,7 @@ export default function BooksId({idUser,biography,exists}){
 
                     </div>
 
-                    <div className='flex flex-col flex-1 order-3 lg:flex hidden gap-4'>
+                    {/* <div className='flex flex-col flex-1 order-3 lg:flex hidden gap-4'>
 
                         <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
@@ -217,7 +246,7 @@ export default function BooksId({idUser,biography,exists}){
 
                         </div>
 
-                    </div>
+                    </div> */}
 
                 </div>
 
@@ -261,7 +290,12 @@ export async function getServerSideProps(context){
                 return {
                     props: {
                         biography: userInfos?.bio||false,
+                        website: userInfos?.website||false,
+                        language: userInfos?.language||false,
+                        age: userInfos?.age||false,
+                        creation: userInfos?.created_at||false,
                         exists: userInfos?.name||false,
+                        avis: userInfos?.posts||false,
                         idUser: id,
                     }
                 }

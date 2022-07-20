@@ -1,0 +1,54 @@
+polars
+romances
+sf
+bd
+manga
+manuels scolaires ou techniques
+livres pour enfants litterature generale
+young adult
+fantasy
+thrillers
+nouvelle
+conte
+mythe
+légende
+biographie
+autobiographie
+chronique
+apologue
+journal
+genre romanesque
+roman sentimental
+roman de moeurs
+roman d'apprentissage
+roman d'anticipation ou de science-fiction
+roman d'aventure
+roman philosophique
+roman picaresque
+roman policier
+roman historique
+roman d'horreur
+genre poétique
+chanson
+ballade
+calligramme
+chant royal
+élégie
+épigramme
+épopée
+fatrasie
+ode
+genre théâtral
+tragédie
+comédie
+farce
+moralité
+drame
+proverbe
+genre épistolaire
+genre argumentatif
+essai
+fable
+fabliau
+pamphlet
+sermon
