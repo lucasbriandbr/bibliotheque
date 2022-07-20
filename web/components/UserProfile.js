@@ -1,8 +1,8 @@
 import Link from "next/link"
 
-export default function UserProfile() {
+export default function UserProfile({name,abonnes,books}) {
     return(
-        <Link href={'/user/lucasaurus'}>
+        <Link href={`/user/@${name}`}>
 
             <div className="flex flex-row w-full gap-4 items-center justify-center cursor-pointer">
 
@@ -10,13 +10,13 @@ export default function UserProfile() {
 
                 <div className="w-full flex flex-col">
 
-                    <p>lucasaurus</p>
+                    <p>{name}</p>
 
                     <div className="flex flex-row gap-2">
 
-                        <p className="text-xs">1 Friends</p>
+                        <p className="text-xs">{abonnes} Friends</p>
 
-                        <p className="text-xs">1 Books</p>
+                        <p className="text-xs">{books} Books</p>
 
                     </div>
 

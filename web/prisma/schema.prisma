@@ -137,6 +137,12 @@ model Statebook {
 
 }
 
+model Challenge {
+
+  id        Int     @id @unique @default(autoincrement())
+
+}
+
 enum Role {
 
   //simple lecteur

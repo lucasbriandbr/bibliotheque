@@ -22,15 +22,19 @@ import BooksStatik from '../../constantes/BooksStatik'
 import hangLanguage from '../../fonctionsutiles/validateurs/hangLanguage'
 import hangMonthFromIndex from '../../fonctionsutiles/validateurs/hangMonthFromIndex'
 
-export default function BooksId({idUser,biography,website,language,age,creation,avis,exists}){
+export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnés,exists}){
 
     let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
+    let current = new Date()
     let createdat = new Date(creation)
 
     const [ loader1, setLoader1 ] = useState(false)
     const [ loader2, setLoader2 ] = useState(false)
     const [ loader3, setLoader3 ] = useState(false)
     const [ loader4, setLoader4 ] = useState(false)
+
+    console.log('abonnements:',abonnements)
+    console.log('abonnés:',abonnés)
 
     return(
         <>
@@ -208,7 +212,7 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                     </div>
 
-                    {/* <div className='flex flex-col flex-1 order-3 lg:flex hidden gap-4'>
+                    <div className='flex flex-col flex-1 order-3 lg:flex hidden gap-4'>
 
                         <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
@@ -246,7 +250,7 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                         </div>
 
-                    </div> */}
+                    </div>
 
                 </div>
 
@@ -297,6 +301,8 @@ export async function getServerSideProps(context){
                         exists: userInfos?.name||false,
                         avis: userInfos?.posts||false,
                         idUser: id,
+                        abonnements: userInfos?.friends||false,
+                        abonnés: userInfos?.friendof||false,
                     }
                 }
             })

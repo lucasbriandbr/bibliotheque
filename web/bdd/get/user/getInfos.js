@@ -17,6 +17,28 @@ export async function getInfos(name){
             language: true,
             created_at: true,
             posts: true,
+            friendof: {
+                select: {
+                    name: true,
+                    lib: true,
+                    friendof:  {
+                        select: {
+                            name: true,
+                        }
+                    },
+                }
+            },
+            friends: {
+                select: {
+                    name: true,
+                    lib: true,
+                    friendof: {
+                        select: {
+                            name: true,
+                        }
+                    },
+                }
+            },
         },
         orderBy: {
             id: 'asc',
