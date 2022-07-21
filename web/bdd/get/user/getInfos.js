@@ -17,28 +17,29 @@ export async function getInfos(name){
             language: true,
             created_at: true,
             posts: true,
-            friendof: {
+            User_B: {
                 select: {
                     name: true,
                     lib: true,
-                    friendof:  {
+                    User_A:  {
                         select: {
                             name: true,
                         }
                     },
                 }
             },
-            friends: {
+            User_A: {
                 select: {
                     name: true,
                     lib: true,
-                    friendof: {
+                    User_A: {
                         select: {
                             name: true,
                         }
                     },
                 }
             },
+            lib: true,
         },
         orderBy: {
             id: 'asc',

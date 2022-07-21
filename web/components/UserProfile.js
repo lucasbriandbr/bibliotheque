@@ -10,7 +10,7 @@ export default function UserProfile({name,abonnes,books}) {
 
                 <div className="w-full flex flex-col">
 
-                    <p>{name}</p>
+                    <p>@{name}</p>
 
                     <div className="flex flex-row gap-2">
 

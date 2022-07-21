@@ -9,175 +9,81 @@ datasource db {
 }
 
 model User {
-
   id         Int         @id @unique @default(autoincrement())
-
-  //informations de connexion
   email      String      @unique
   name       String      @unique
-  password   String      
-
-  //role de l'utilisateur
+  password   String
   role       Role        @default(READER)
-
-  //date de creation et derniere connexion
   created_at DateTime    @default(now())
   lastCnnct  DateTime    @default(now())
-
-  //notes et avis attribués
-  posts      Post[]      
-
-  //liste des livres et de leur état
-  lib        Statebook[]
-
-  //livres que l'utilisateur peut avoir écrit
-  written    Book[]
-
-  //amis que l'utilisateur peut avoir
-  friends    User[]      @relation("UserFriendsUser")
-  friendof   User[]      @relation("UserFriendsUser")
-
-  //biograhie
   bio        String?
-
-  //age
   age        Int?
-
-  //statut du compte         
   private    Boolean     @default(false)
-
-  //langue du compte
   language   Lang        @default(EN)
-
-  //lien d'un eventuel site web
-  website    String?    
-
+  website    String?
+  posts      Post[]
+  lib        Statebook[]
+  written    Book[]
+  User_B     User[]      @relation("UserFriendsUser")
+  User_A     User[]      @relation("UserFriendsUser")
 }
 
 model Post {
-
-  id        Int          @id @unique @default(autoincrement())
-
-  //titre du post
+  id        Int      @id @unique @default(autoincrement())
   title     String?
-
-  //date de creation du post
-  createdAt DateTime     @default(now())
-
-  //contenu du post
+  createdAt DateTime @default(now())
   content   String?
-
-  //post publié ou pas
-  published Boolean      @default(true)
-
-  //livre auquel il se réfère
+  published Boolean  @default(true)
   bookId    Int
-  book      Book         @relation(fields: [bookId], references: [id])
-
-  //note attribuée à ce livre
   note      Int
-
-  //auteur du post
-  authorId    Int
-  author      User         @relation(fields: [authorId], references: [id])
-
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
 }
 
 model Book {
-
-  id        Int     @id @unique @default(autoincrement())
-
-  //titre du livre
+  id        Int         @id @unique @default(autoincrement())
   title     String
-
-  //est-ce une série ou pas
-  serie     Boolean @default(false)
-
-  //ce livre est-il actif ou pas ?
-  published Boolean @default(true)
-
-  //Quel est le tome s'il s'agit d'une série ?
-  tome      Int     @default(1)
-
-  //Source de l'image
-  imgsrc    String  @unique
-
-  //isbn 10 et 13 du livre
-  isbn10    String  @unique
-  isbn13    String  @unique
-
-  //sku (reference) du produit
-  sku       String  @unique
-
-  //quels sont les avis sur ce livre
+  serie     Boolean     @default(false)
+  published Boolean     @default(true)
+  tome      Int         @default(1)
+  imgsrc    String      @unique
+  isbn10    String      @unique
+  isbn13    String      @unique
+  sku       String      @unique
   avis      Post[]
-
-  //quels sont les auteurs de ce livre
-  authors   User[]
-
-  //Quel est l'état de ce livre pour les lecteurs ?
   state     Statebook[]
-
+  authors   User[]
 }
 
 model Statebook {
-
-  id        Int     @id @unique @default(autoincrement())
-
-  //utilisateur auquel il se réfère
-  userId    Int
-  user      User    @relation(fields: [userId], references: [id])
-
-  //état du livre (lu, en cours, veut lire)
-  state     State
-
-  //livre auquel il se réfère
-  bookId    Int
-  book      Book    @relation(fields: [bookId], references: [id])
-
+  id       Int     @id @unique @default(autoincrement())
+  userId   Int
+  state    State
+  bookId   Int
+  favorite Boolean @default(false)
+  book     Book    @relation(fields: [bookId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
 }
 
 model Challenge {
-
-  id        Int     @id @unique @default(autoincrement())
-
+  id Int @id @unique @default(autoincrement())
 }
 
 enum Role {
-
-  //simple lecteur
   READER
-
-  //auteur de livre
   AUTHOR
-
-  //éditeur de livre
   EDITOR
-
-  //administrateur du site
   ADMIN
-
 }
 
 enum Lang {
-
-  //ENglish
   EN
-
-  //FRançais
   FR
-
 }
 
 enum State {
-
-  //Marque comme "je veux le lire"
   WANNAREAD
-
-  //marqué comme "en train d'être lu"
   CURRENTLYREADING
-
-  //marqué comme "lu"
   READ
-  
 }

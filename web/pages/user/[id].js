@@ -22,7 +22,7 @@ import BooksStatik from '../../constantes/BooksStatik'
 import hangLanguage from '../../fonctionsutiles/validateurs/hangLanguage'
 import hangMonthFromIndex from '../../fonctionsutiles/validateurs/hangMonthFromIndex'
 
-export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnés,exists}){
+export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnes,librairie,exists}){
 
     let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
     let current = new Date()
@@ -32,9 +32,6 @@ export default function BooksId({idUser,biography,website,language,age,creation,
     const [ loader2, setLoader2 ] = useState(false)
     const [ loader3, setLoader3 ] = useState(false)
     const [ loader4, setLoader4 ] = useState(false)
-
-    console.log('abonnements:',abonnements)
-    console.log('abonnés:',abonnés)
 
     return(
         <>
@@ -50,11 +47,11 @@ export default function BooksId({idUser,biography,website,language,age,creation,
                 
                 <div className='w-full flex lg:flex-row flex-col p-4 gap-4'>
 
-                    {/* <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
+                    <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
 
                         <div className='flex flex-col rounded-lg border-[1px] border-gray-300 p-4'>
 
-                            <p className='font-semibold mb-4'>{userName}&apos; {current.getFullYear().toString()} Book Challenge</p>
+                            <p className='font-semibold mb-4'>{userName}&apos;s {current.getFullYear().toString()} Book Challenge</p>
 
                             <p className='text-sm mb-4'>{userName} has read 4 books of their goal of 10!</p>
 
@@ -66,37 +63,45 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                         </div>
 
-                        <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
-
-                            <p className='font-semibold'>{userName}&apos;s Library</p>
-
-                            {BooksStatik().slice(0,3).map((book)=>{return(
-                                <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
-                            )})}
-
-                            <Link href={`/book`}><a className='text-xs text-gray-500 cursor-pointer underline'>More...</a></Link>
-
-                        </div>
-
-                        <div className='flex flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
+                        <div className='lg:flex hidden flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
 
                             <p className='font-semibold'>{userName}&apos;s Favorite Books</p>
-
-                            {BooksStatik().slice(0,3).map((book)=>{return(
-                                <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
-                            )})}
+                        
+                            {librairie!==false&&librairie.length!==0?
+                                librairie.slice(0,3).map((book)=>{return(
+                                    <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
+                                )})
+                            :
+                            <p className='text-sm'>{userName} do not have any books registered in his favorites.</p>
+                            }
 
                             <Link href={`/book`}><a className='text-xs text-gray-500 cursor-pointer underline'>More...</a></Link>
 
                         </div>
 
-                    </div> */}
+                        <div className='lg:flex hidden flex-1 flex-col rounded-lg border-[1px] border-gray-300 p-4 gap-4'>
+
+                            <p className='font-semibold'>{userName}&apos;s Library</p>
+                        
+                            {librairie!==false&&librairie.length!==0?
+                                librairie.slice(0,3).map((book)=>{return(
+                                    <LilBooks key={book.sku} src={book.imgsrc} title={book.title} author={book.author} sku={book.sku}/>
+                                )})
+                            :
+                            <p className='text-sm'>{userName} do not have any books registered in his library.</p>
+                            }
+
+                            <Link href={`/book`}><a className='text-xs text-gray-500 cursor-pointer underline'>More...</a></Link>
+
+                        </div>
+
+                    </div>
 
                     <div className='flex flex-[3] lg:order-2 order-1 flex-col rounded-lg border-[1px] border-gray-300 relative'>
 
                         <div className='h-[25vh] flex w-full rounded-lg bg-gradient-to-b from-indigo-500 to-[rgb(99,102,241,0.1)]'></div>
 
-                        <div className=' flex flex-col flex w-full rounded-lg mt-[calc(5rem)] justify-center items-center p-4'>
+                        <div className='p-4 flex flex-col flex w-full rounded-lg mt-[calc(5rem)] justify-center items-center'>
 
                             <p className='text-xl font-semibold'>{userName}</p>
 
@@ -104,24 +109,34 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                         </div>
 
-                        {/* <div className='p-4 flex flex-row w-full items-center justify-center gap-4'>
+                        <div className='p-4 flex flex-row lg:hidden flex w-full items-center justify-center gap-4'>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader1?<Loader/>:"Add to Friends"}</button>
+                            <p className='flex-1 text-center text-sm'><span className='font-semibold text-base'>{abonnes.length}</span><br/>abonnés</p>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button>
+                            <p className='flex-1 text-center text-sm'><span className='font-semibold text-base'>{avis.length}</span><br/>publications</p>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader3?<Loader/>:"Compare Books"}</button>
+                            <p className='flex-1 text-center text-sm'><span className='font-semibold text-base'>{librairie.length}</span><br/>books</p>
 
-                            <button className="block w-full border-[1px] border-black focus:outline-none mt-4 font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button>
+                        </div>
 
-                        </div> */}
+                        <div className='p-4 flex flex-row w-full items-center justify-center gap-4'>
 
-                        <div className='grid grid-cols-2 gap-4 p-4'>
+                            <button className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader1?<Loader/>:"Add to Friends"}</button>
+
+                            {/* <button className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader2?<Loader/>:"Send Message"}</button> */}
+
+                            <button className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader3?<Loader/>:"Compare Books"}</button>
+
+                            {/* <button className="block w-full border-[1px] border-black focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 transition-all ease-in-out duration-300 hover:bg-gray-100">{loader4?<Loader/>:"Block / Report"}</button> */}
+
+                        </div>
+
+                        <div className='p-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-4'>
                             
                             <div>
                                 
                                 {avis!==false?
-                                    <div className='flex flex-row mb-2 gap-1'>
+                                    <div className='lg:flex hidden flex-row mb-2 gap-1'>
 
                                         <div className='flex flex-[2]'><p className='font-semibold text-sm'>Notes : </p></div>
                                         
@@ -156,12 +171,12 @@ export default function BooksId({idUser,biography,website,language,age,creation,
                                 ''
                                 }
                                 
-                                {website!==false?
+                                {creation!==false?
                                     <div className='flex flex-row mb-2 gap-1'>
 
-                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Website : </p></div>
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Activity : </p></div>
                                         
-                                        <div className='flex flex-[4]'><p className='text-sm'><a href={website} className='underline'>{website}</a></p></div>
+                                        <div className='flex flex-[4]'><p className='text-sm'>Joined in {hangMonthFromIndex(createdat.getMonth())} {createdat.getFullYear()}</p></div>
 
                                     </div>
                                 :
@@ -179,18 +194,6 @@ export default function BooksId({idUser,biography,website,language,age,creation,
                                     <div className='flex flex-[4]'><p className='text-sm'>Romance, Heroic Fantaisy</p></div>
 
                                 </div> */}
-                                
-                                {creation!==false?
-                                    <div className='flex flex-row mb-2 gap-1'>
-
-                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Activity : </p></div>
-                                        
-                                        <div className='flex flex-[4]'><p className='text-sm'>Joined in {hangMonthFromIndex(createdat.getMonth())} {createdat.getFullYear()}</p></div>
-
-                                    </div>
-                                :
-                                ''
-                                }
 
                                 {biography!==false?
                                     <div className='flex flex-row mb-2 gap-1'>
@@ -202,6 +205,18 @@ export default function BooksId({idUser,biography,website,language,age,creation,
                                     </div>
                                     :
                                     ''
+                                }
+                                
+                                {website!==false?
+                                    <div className='flex flex-row mb-2 gap-1'>
+
+                                        <div className='flex flex-[2]'><p className='font-semibold text-sm'>Website : </p></div>
+                                        
+                                        <div className='flex flex-[4]'><p className='text-sm'><a href={website} className='underline'>{website}</a></p></div>
+
+                                    </div>
+                                :
+                                ''
                                 }
 
                             </div>
@@ -218,15 +233,13 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                             <p className='font-semibold'>{userName}&apos;s Friends</p>
 
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
+                            {abonnes!==false&&abonnes.length!==0?
+                                abonnes.map((abonne)=>{return(
+                                    <UserProfile key={abonne.name} name={abonne.name} abonnes={abonne.User_A.length} books={abonne.lib.length} />
+                                )})
+                            :
+                            <p className='text-sm'>{userName} do not have any followers.</p>
+                            }
 
                             <Link href={`/user`}><a className='text-xs text-gray-500 cursor-pointer underline'>More...</a></Link>
 
@@ -236,15 +249,13 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                             <p className='font-semibold'>People {userName} is following</p>
 
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
-
-                            <UserProfile/>
+                            {abonnements!==false&&abonnements.length!==0?
+                                abonnements.map((abonnement)=>{return(
+                                    <UserProfile key={abonnement.name} name={abonnement.name} abonnes={abonnement.User_A.length} books={abonnement.lib.length} />
+                                )})
+                            :
+                            <p className='text-sm'>{userName} do not follow anyone.</p>
+                            }
 
                             <Link href={`/user`}><a className='text-xs text-gray-500 cursor-pointer underline'>More...</a></Link>
 
@@ -301,8 +312,9 @@ export async function getServerSideProps(context){
                         exists: userInfos?.name||false,
                         avis: userInfos?.posts||false,
                         idUser: id,
-                        abonnements: userInfos?.friends||false,
-                        abonnés: userInfos?.friendof||false,
+                        abonnements: userInfos?.User_B||false,
+                        abonnes: userInfos?.User_A||false,
+                        librairie: userInfos?.lib||false,
                     }
                 }
             })

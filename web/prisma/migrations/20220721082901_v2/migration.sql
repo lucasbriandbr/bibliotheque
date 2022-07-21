@@ -60,8 +60,16 @@ CREATE TABLE "Statebook" (
     "userId" INTEGER NOT NULL,
     "state" "State" NOT NULL,
     "bookId" INTEGER NOT NULL,
+    "favorite" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Statebook_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Challenge" (
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "Challenge_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -107,6 +115,9 @@ CREATE UNIQUE INDEX "Book_sku_key" ON "Book"("sku");
 CREATE UNIQUE INDEX "Statebook_id_key" ON "Statebook"("id");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Challenge_id_key" ON "Challenge"("id");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_UserFriendsUser_AB_unique" ON "_UserFriendsUser"("A", "B");
 
 -- CreateIndex
@@ -119,16 +130,16 @@ CREATE UNIQUE INDEX "_BookToUser_AB_unique" ON "_BookToUser"("A", "B");
 CREATE INDEX "_BookToUser_B_index" ON "_BookToUser"("B");
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_bookId_fkey" FOREIGN KEY ("bookId") REFERENCES "Book"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Post" ADD CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Statebook" ADD CONSTRAINT "Statebook_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_bookId_fkey" FOREIGN KEY ("bookId") REFERENCES "Book"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Statebook" ADD CONSTRAINT "Statebook_bookId_fkey" FOREIGN KEY ("bookId") REFERENCES "Book"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Statebook" ADD CONSTRAINT "Statebook_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_UserFriendsUser" ADD CONSTRAINT "_UserFriendsUser_A_fkey" FOREIGN KEY ("A") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
