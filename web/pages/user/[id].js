@@ -22,11 +22,12 @@ import BooksStatik from '../../constantes/BooksStatik'
 import hangLanguage from '../../fonctionsutiles/validateurs/hangLanguage'
 import hangMonthFromIndex from '../../fonctionsutiles/validateurs/hangMonthFromIndex'
 
-export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnes,librairie,exists}){
+export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnes,librairie,challenge,exists}){
 
     let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
     let current = new Date()
     let createdat = new Date(creation)
+    let cp = Math.floor(((challenge[0].books.length)/(challenge[0].objectif))*100)
 
     const [ loader1, setLoader1 ] = useState(false)
     const [ loader2, setLoader2 ] = useState(false)
@@ -52,14 +53,20 @@ export default function BooksId({idUser,biography,website,language,age,creation,
                         <div className='flex flex-col rounded-lg border-[1px] border-gray-300 p-4'>
 
                             <p className='font-semibold mb-4'>{userName}&apos;s {current.getFullYear().toString()} Book Challenge</p>
+                            
+                            {challenge!==false?
+                            <>
+                                <p className='text-sm mb-4'>{userName} has read {challenge[0].books.length} books of their goal of {challenge[0].objectif}.</p>
 
-                            <p className='text-sm mb-4'>{userName} has read 4 books of their goal of 10!</p>
+                                <div className="w-full bg-gray-600 rounded-full h-1.5 dark:bg-gray-300 mb-4">
+                                    <div className="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: cp+'%' }}></div>
+                                </div>
 
-                            <div className="w-full bg-gray-600 rounded-full h-1.5 dark:bg-gray-300 mb-4">
-                                <div className="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: 40+'%' }}></div>
-                            </div>
-
-                            <p className='text-sm text-gray-400'>100%</p>
+                                <p className='text-sm text-gray-400'>{cp}%</p>
+                            </>
+                            :
+                            ''
+                            }
 
                         </div>
 
@@ -315,6 +322,7 @@ export async function getServerSideProps(context){
                         abonnements: userInfos?.User_B||false,
                         abonnes: userInfos?.User_A||false,
                         librairie: userInfos?.lib||false,
+                        challenge: userInfos?.challenge||false,
                     }
                 }
             })

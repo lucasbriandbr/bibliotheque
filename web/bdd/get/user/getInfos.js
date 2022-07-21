@@ -1,5 +1,7 @@
 import connectBdd from "../../connecteur"
 
+let current = new Date().getFullYear()
+
 export async function getInfos(name){
     const prisma = connectBdd()
     const user = await prisma.user.findFirst({
@@ -40,6 +42,17 @@ export async function getInfos(name){
                 }
             },
             lib: true,
+            challenge: {
+                where: {
+                    year: {
+                        equals: current
+                    }
+                },
+                select: {
+                    objectif: true,
+                    books: true,
+                }
+            }
         },
         orderBy: {
             id: 'asc',

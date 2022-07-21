@@ -26,6 +26,7 @@ model User {
   written    Book[]
   User_B     User[]      @relation("UserFriendsUser")
   User_A     User[]      @relation("UserFriendsUser")
+  challenge  Challenge[]
 }
 
 model Post {
@@ -42,32 +43,39 @@ model Post {
 }
 
 model Book {
-  id        Int         @id @unique @default(autoincrement())
-  title     String
-  serie     Boolean     @default(false)
-  published Boolean     @default(true)
-  tome      Int         @default(1)
-  imgsrc    String      @unique
-  isbn10    String      @unique
-  isbn13    String      @unique
-  sku       String      @unique
-  avis      Post[]
-  state     Statebook[]
-  authors   User[]
+  id          Int         @id @unique @default(autoincrement())
+  title       String
+  serie       Boolean     @default(false)
+  published   Boolean     @default(true)
+  tome        Int         @default(1)
+  imgsrc      String      @unique
+  isbn10      String      @unique
+  isbn13      String      @unique
+  sku         String      @unique
+  avis        Post[]
+  state       Statebook[]
+  authors     User[]
+  challenge   Challenge[]
 }
 
 model Statebook {
-  id       Int     @id @unique @default(autoincrement())
-  userId   Int
-  state    State
-  bookId   Int
-  favorite Boolean @default(false)
-  book     Book    @relation(fields: [bookId], references: [id])
-  user     User    @relation(fields: [userId], references: [id])
+  id         Int          @id @unique @default(autoincrement())
+  userId     Int
+  state      State
+  bookId     Int
+  favorite   Boolean      @default(false)
+  book       Book         @relation(fields: [bookId], references: [id])
+  user       User         @relation(fields: [userId], references: [id])
+  setAsRead  DateTime
 }
 
 model Challenge {
-  id Int @id @unique @default(autoincrement())
+  id          Int     @id @unique @default(autoincrement())
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+  year        Int
+  objectif    Int
+  books       Book[]
 }
 
 enum Role {
