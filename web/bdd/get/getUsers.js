@@ -16,12 +16,11 @@ export function updateUserInfos(id,password) {
     
 }
 
-export default async function getUsers(number) {
+export default async function getUsers() {
     const prisma = connectBdd()
     return prisma.user.findMany({
         select: {
             name: true,
-            role: true,
         },
         orderBy: {
             id: 'asc'

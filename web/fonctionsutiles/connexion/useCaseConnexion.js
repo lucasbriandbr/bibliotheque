@@ -21,3 +21,10 @@ export function getUserInfos(name) {
         return userInfos
     })
 }
+
+export function searchUser(string) {
+    return getRequest('/api/v2/get/user/getName', {string})
+    .then((userInfos) => {
+        return userInfos
+    })
+}

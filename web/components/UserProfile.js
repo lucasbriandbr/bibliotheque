@@ -14,9 +14,9 @@ export default function UserProfile({name,abonnes,books}) {
 
                     <div className="flex flex-row gap-2">
 
-                        <p className="text-xs">{abonnes} Friends</p>
+                        <p className="text-xs">{abonnes} friend{abonnes!=1?'s':''}</p>
 
-                        <p className="text-xs">{books} Books</p>
+                        <p className="text-xs">{books} book{books!=1?'s':''}</p>
 
                     </div>
 
