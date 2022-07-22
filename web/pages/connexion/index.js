@@ -65,9 +65,9 @@ export default function Connexion() {
 
             <div className={`flex flex-row h-[100%] w-full bg-white`}>
                 
-                <div className={`hidden lg:flex border-r-[1px] border-gray-300 justify-center items-center`}>
+                {/* <div className={`hidden lg:flex border-r-[1px] border-gray-300 justify-center items-center`}>
                    <img src={`/img/bibliotheque-5.webp`} alt={`Une couverture de livre`} className={``}/>
-                </div>
+                </div> */}
 
                 <div className={`flex flex-col h-full w-full p-8 items-center justify-center`}>
 

@@ -45,7 +45,7 @@ export default function BooksId({idUser,biography,website,language,age,creation,
         
                 <NavBar elements={NavLinks()}/>
                 
-                <div className='w-full flex lg:flex-row flex-col p-4 gap-4'>
+                <div className='w-full flex lg:flex-row flex-col p-4 mt-4 gap-4'>
 
                     <div className='flex flex-col flex-1 lg:order-1 order-2 gap-4'>
 

@@ -39,10 +39,10 @@ export default function Search() {
 
     return(
         <>
-        <Head>
-            <title>Recherche - Alexandria</title>
-            <meta name="description" content="Written with Heart" />
-            <link rel="icon" href="/favicon.ico" />
+            <Head>
+                <title>Recherche - Alexandria</title>
+                <meta name="description" content="Written with Heart" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
     
             <NavBar elements={NavLinks()}/>
@@ -62,7 +62,7 @@ export default function Search() {
                 <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 min-h-[55vh] bg-white text-white p-8 gap-8`}>
 
                     {BooksStatik().slice((state-1)*elements,state*elements).map((book)=>{return(
-                        <BigCard key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
+                        <Card key={book.imgsrc} src={book.imgsrc} title={book.title} author={book.author} serie={book.serie} tome={book.tome} note={book.note} sku={book.sku}/>
                     )})}
 
                 </div>
