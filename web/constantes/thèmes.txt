@@ -52,3 +52,5 @@ fable
 fabliau
 pamphlet
 sermon
+uchronie 
+dystopie

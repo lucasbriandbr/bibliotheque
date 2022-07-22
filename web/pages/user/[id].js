@@ -24,15 +24,14 @@ import hangMonthFromIndex from '../../fonctionsutiles/validateurs/hangMonthFromI
 
 export default function BooksId({idUser,biography,website,language,age,creation,avis,abonnements,abonnes,librairie,challenge,exists}){
 
-    let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
-    let current = new Date()
-    let createdat = new Date(creation)
-    let cp = Math.floor(((challenge[0].books.length)/(challenge[0].objectif))*100)
-
     const [ loader1, setLoader1 ] = useState(false)
     const [ loader2, setLoader2 ] = useState(false)
     const [ loader3, setLoader3 ] = useState(false)
     const [ loader4, setLoader4 ] = useState(false)
+
+    let userName = idUser.replace('@','')[0].toUpperCase()+idUser.replace('@','').slice(1)
+    let current = new Date()
+    let createdat = new Date(creation)
 
     return(
         <>
@@ -54,18 +53,18 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                             <p className='font-semibold mb-4'>{userName}&apos;s {current.getFullYear().toString()} Book Challenge</p>
                             
-                            {challenge!==false?
+                            {challenge!==false&&challenge.length!==0?
                             <>
                                 <p className='text-sm mb-4'>{userName} has read {challenge[0].books.length} books of their goal of {challenge[0].objectif}.</p>
 
                                 <div className="w-full bg-gray-600 rounded-full h-1.5 dark:bg-gray-300 mb-4">
-                                    <div className="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: cp+'%' }}></div>
+                                    <div className="bg-gray-200 h-1.5 rounded-full dark:bg-gray-700" style={{ width: Math.floor(((challenge[0].books.length)/(challenge[0].objectif))*100)+'%' }}></div>
                                 </div>
 
-                                <p className='text-sm text-gray-400'>{cp}%</p>
+                                <p className='text-sm text-gray-400'>{Math.floor(((challenge[0].books.length)/(challenge[0].objectif))*100)}%</p>
                             </>
                             :
-                            ''
+                            <p className='text-sm'>{userName} is not participating in the challenge at the moment.</p>
                             }
 
                         </div>

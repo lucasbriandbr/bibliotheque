@@ -20,11 +20,17 @@ export default function NavBar({elements}) {
             <nav className={`overflow-hidden${menuOpen?"":" h-[51px]"} ${width>=770?" h-[48px]":""} fixed top-0 w-full z-10`}>
                 <div className={`relative bg-[#faebd7]`}>
                     <div className={`flex flex-wrap justify-between items-center mx-auto`}>
+
+                        {/* Titre du site */}
+
                         <Link href={"/"}>
                             <a className={`flex ml-6 items-center ${styles.title}`}>
-                                <span className={`self-center text-xl font-semibold whitespace-nowrap`}>Alexandria</span>
+                                <span className={`self-center text-xl font-semibold whitespace-nowrap`}>Elie's Books and Coffee</span>
                             </a>
                         </Link>
+
+                        {/* Affiche la liste des pages, sinon affiche l'icone ouvrant */}
+
                         {width>=770?
                         <div className={`block w-auto`}>
                             <ul className={`flex flex-row text-sm ${styles.links}`}>
@@ -37,7 +43,11 @@ export default function NavBar({elements}) {
                                 )})}
                             </ul>
                         </div>
+
                         :
+
+                        // Affiche l'icone de menu
+
                         <div className={`${styles.menuicon}`} onClick={() => setMenuOpen(!menuOpen)}>
                             <input className={`${styles.menuicon__cheeckbox}`} type="checkbox"/>
                             <div>
@@ -48,6 +58,9 @@ export default function NavBar({elements}) {
                         }
                     </div>
                 </div>
+
+                {/* Affiche les liens si le menu est ouvert */}
+
                 <div className={`relative transition-all duration-1000 ease-in-out border-black bg-[#faebd7] ${menuOpen?"":"hidden"}`}>
                     <ul className={`flex flex-col md:flex-row md:text-sm md:font-medium`}>
                         {elements.map((element) => {return(
@@ -60,6 +73,8 @@ export default function NavBar({elements}) {
                     </ul>
                 </div>
             </nav>
+
+            {/* Espace afin de bien gérer la navbar */}
 
             <div className={`${width>=770?" h-[47px]":"h-[50px]"}`}></div>
         </>
