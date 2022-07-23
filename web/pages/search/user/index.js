@@ -39,7 +39,7 @@ export default function user() {
             
             <div className='h-[calc(100vh-40px)]'>
 
-                <div className={`flex flex-row text-sm mt-4 p-4 gap-4`}>
+                <div className={`flex flex-row text-sm mt-4 pl-4 pt-4 pr-4 gap-4`}>
 
                     <input id={'recherche'} className={`flex px-5 py-2.5 w-full border-black border rounded-lg focus:outline-none`} placeholder={`Search user...`} value={input} onChange={()=>setInput(document.getElementById('recherche').value.toLowerCase())}/>
 
