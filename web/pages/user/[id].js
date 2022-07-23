@@ -218,7 +218,7 @@ export default function BooksId({idUser,biography,website,language,age,creation,
 
                                         <div className='flex flex-[2]'><p className='font-semibold text-sm'>Website : </p></div>
                                         
-                                        <div className='flex flex-[4]'><p className='text-sm'><a href={website} className='underline'>{website}</a></p></div>
+                                        <div className='flex flex-[4]'><p className='text-sm'><a href={website} className='underline'>{website.substring(12,website.lastIndexOf('.'))}</a></p></div>
 
                                     </div>
                                 :
